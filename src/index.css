@@ -1,0 +1,467 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+@font-face {
+  font-family: "Bricolage Grotesque";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("./assets/fonts/Bricolage_Grotesque/static/BricolageGrotesque-Bold.ttf")
+    format("truetype");
+}
+@font-face {
+  font-family: "DM Sans";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("./assets/fonts/DM_Sans/static/DMSans-Bold.ttf") format("truetype");
+}
+@font-face {
+  font-family: "DM Sans";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("./assets/fonts/DM_Sans/static/DMSans-SemiBold.ttf")
+    format("truetype");
+}
+@font-face {
+  font-family: "DM Sans";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("./assets/fonts/DM_Sans/static/DMSans-Medium.ttf") format("truetype");
+}
+@font-face {
+  font-family: "DM Sans";
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("./assets/fonts/DM_Sans/static/DMSans-Light.ttf") format("truetype");
+}
+@font-face {
+  font-family: "DM Sans";
+  font-style: italic;
+  font-weight: 600;
+  font-display: swap;
+  src: url("./assets/fonts/DM_Sans/static/DMSans-SemiBoldItalic.ttf")
+    format("truetype");
+}
+@theme {
+  --font-sans: "DM Sans", sans-serif;
+  --font-serif: "Bricolage Grotesque", serif;
+
+  --day-bg-start: #c4f6fcdb;
+  --day-bg-end: #fafafaf2;
+  --night-bg-start: #03012d;
+  --night-bg-end: #f3604243;
+  --night-bg-end-solid: #f36042;
+
+  --neutral-900: rgb(3, 1, 45);
+  --neutral-800: hsl(243, 27%, 20%);
+  --neutral-700: hsl(243, 23%, 24%);
+  --neutral-600: hsl(243, 23%, 30%);
+  --neutral-300: rgb(174, 174, 183);
+  --neutral-200: rgb(213, 212, 217);
+  --neutral-000: hsl(0, 0%, 100%);
+  --orange-500: hsl(28, 100%, 52%);
+  --blue-200: hsl(210, 100%, 70%);
+  --blue-300: hsl(210, 100%, 47%);
+
+  --blue-500: hsl(233, 67%, 56%);
+  --blue-700: hsl(248, 70%, 36%);
+
+  --day-gradient: linear-gradient(
+    to right,
+    var(--blue-200) 0 50%,
+    var(--blue-300) 100%
+  );
+
+  --night-gradient: linear-gradient(
+    to right,
+    var(--blue-500) 0 50%,
+    var(--blue-700) 100%
+  );
+
+  /* === TEXT PRESETS === */
+  --text-preset-1-size: 6rem;
+  --text-preset-1-height: 100%;
+  --text-preset-1-spacing: -2px;
+  --text-preset-1-weight: 600; /* SemiBold */
+  --text-preset-1-style: italic;
+
+  --text-preset-2-size: 3.25rem;
+  --text-preset-2-height: 120%;
+  --text-preset-2-weight: 700; /* Bold */
+
+  --text-preset-3-size: 2rem;
+  --text-preset-3-height: 100%;
+  --text-preset-3-weight: 300; /* Light */
+
+  --text-preset-4-size: 1.75rem;
+  --text-preset-4-height: 120%;
+  --text-preset-4-weight: 700; /* Bold */
+
+  --text-preset-5-size: 1.25rem;
+  --text-preset-5-height: 120%;
+
+  --text-preset-6-size: 1.125rem;
+  --text-preset-6-height: 120%;
+  --text-preset-6-weight: 500; /* Medium */
+
+  --text-preset-7-size: 1rem;
+  --text-preset-7-height: 120%;
+  --text-preset-7-weight: 500; /* Medium */
+
+  --text-preset-8-size: 0.875rem;
+  --text-preset-8-height: 120%;
+  --text-preset-8-weight: 500; /* Medium */
+
+  --text-base: 1.125rem;
+
+  --breakpoint-xl: 90rem;
+  --breakpoint-lg: 72rem;
+
+  @keyframes dayGradient {
+    from {
+      background-position: 50% 50%, 50% 50%;
+    }
+    to {
+      background-position: 350% 50%, 350% 50%;
+    }
+  }
+
+  @keyframes nightGradient {
+    from {
+      background-position: 50% 50%, 50% 50%;
+    }
+    to {
+      background-position: 350% 50%, 350% 50%;
+    }
+  }
+}
+
+:root {
+  scrollbar-color: var(--neutral-900) var(--neutral-600);
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  box-shadow: 0 0 0 1000px #ffffff inset !important;
+  -webkit-text-fill-color: #272541 !important;
+  transition: background-color 5000s ease-in-out 0s !important;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    scrollbar-color: var(--blue-500) white;
+    scroll-behavior: smooth;
+    scrollbar-width: thin;
+  }
+}
+
+.dark input:-webkit-autofill,
+.dark input:-webkit-autofill:hover,
+.dark input:-webkit-autofill:focus,
+.dark input:-webkit-autofill:active {
+  box-shadow: 0 0 0 1000px #272541 inset !important;
+  -webkit-text-fill-color: #ffffff !important;
+  transition: background-color 5000s ease-in-out 0s !important;
+}
+
+@layer base {
+  body {
+    @apply fill-white not-dark:fill-(--neutral-900);
+    font-size: var(--text-base); /* 18px */
+    font-family: var(--font-sans);
+    line-height: 1.5;
+    overflow-y: scroll;
+  }
+
+  button {
+    cursor: pointer;
+  }
+}
+
+@utility text-preset-1 {
+  font-size: var(--text-preset-1-size);
+  line-height: var(--text-preset-1-height);
+  letter-spacing: var(--text-preset-1-spacing);
+  font-weight: var(--text-preset-1-weight);
+  font-style: var(--text-preset-1-style);
+  font-family: var(--font-sans);
+}
+
+@utility text-preset-2 {
+  font-size: var(--text-preset-2-size);
+  line-height: var(--text-preset-2-height);
+  font-weight: var(--text-preset-2-weight);
+  font-family: var(--font-serif);
+}
+
+@utility text-preset-3 {
+  font-size: var(--text-preset-3-size);
+  line-height: var(--text-preset-3-height);
+  font-weight: var(--text-preset-3-weight);
+  font-family: var(--font-sans);
+}
+
+@utility text-preset-4 {
+  font-size: var(--text-preset-4-size);
+  line-height: var(--text-preset-4-height);
+  font-weight: var(--text-preset-4-weight);
+  font-family: var(--font-sans);
+}
+
+@utility text-preset-5 {
+  font-size: var(--text-preset-5-size);
+  line-height: var(--text-preset-5-height);
+  font-family: var(--font-sans);
+}
+
+@utility text-preset-6 {
+  font-size: var(--text-preset-6-size);
+  line-height: var(--text-preset-6-height);
+  font-weight: var(--text-preset-6-weight);
+  font-family: var(--font-sans);
+}
+
+@utility text-preset-7 {
+  font-size: var(--text-preset-7-size);
+  line-height: var(--text-preset-7-height);
+  font-weight: var(--text-preset-7-weight);
+  font-family: var(--font-sans);
+}
+
+@utility text-preset-8 {
+  font-size: var(--text-preset-8-size);
+  line-height: var(--text-preset-8-height);
+  font-weight: var(--text-preset-8-weight);
+  font-family: var(--font-sans);
+}
+
+@utility focus-white {
+  outline: 2px solid var(--neutral-000);
+  outline-offset: 3px;
+}
+
+@utility dark-focus-white {
+  outline: 2px solid var(--neutral-800);
+  outline-offset: 3px;
+}
+
+@utility focus-blue {
+  outline: 2px solid var(--blue-500);
+  outline-offset: 3px;
+}
+
+@utility focus-dropdown-btn {
+  outline: 1px solid var(--neutral-000);
+  outline-offset: 1px;
+  background-color: var(--neutral-700);
+}
+
+@utility dark-focus-dropdown-btn {
+  outline: 1px solid var(--neutral-300);
+  outline-offset: 1px;
+  background-color: #e5e7eb;
+}
+@utility theme-day {
+  background-image: linear-gradient(
+    to right,
+    var(--day-bg-start),
+    var(--day-bg-end),
+    var(--day-bg-start)
+  );
+  background-size: 200% 100%;
+  animation: dayGradient 30s ease-in-out infinite alternate;
+}
+
+@utility theme-night {
+  background-image: linear-gradient(
+    to right,
+    var(--night-bg-start),
+    var(--night-bg-end),
+    var(--night-bg-start)
+  );
+  background-size: 200% 100%;
+  animation: nightGradient 30s ease-in-out infinite alternate;
+}
+
+@layer components {
+  .layout {
+    @apply flex flex-col items-center gap-6 sm:gap-12 xl:gap-16 p-4 md:p-6 xl:px-28 theme-day dark:theme-night min-h-screen text-white bg-(--neutral-900) not-dark:bg-(--blue-200);
+  }
+  .main {
+    @apply w-full max-w-7xl pt-5;
+  }
+  .back_button {
+    @apply flex gap-2 items-center hover:underline hover:gap-4 transition-all duration-[400ms] text-preset-6;
+  }
+
+  /* HEADER */
+  .header {
+    @apply flex justify-between items-center gap-4 md:gap-8 w-full bg-(--neutral-900) not-dark:bg-white py-2 px-2 sm:px-8 shadow-lg shadow-(color:--neutral-800) not-dark:shadow-gray-400 rounded-lg sticky top-5 sm:top-12 z-999 max-w-[100rem] outline-1 dark:outline-(--neutral-700) not-dark:outline-(--neutral-200);
+  }
+  .settings_dropdown {
+    @apply bg-(--neutral-800) not-dark:bg-gray-100 drop-shadow-lg not-dark:drop-shadow-gray-400 not-dark:text-(--neutral-900) hover:bg-(--neutral-700) py-2 px-2.5 rounded-md text-preset-8 sm:text-preset-7 flex items-center gap-2 capitalize focus-visible:focus-white not-dark:focus-visible:dark-focus-white not-dark:hover:bg-gray-100;
+  }
+  legend {
+    @apply text-preset-8 text-(--neutral-300) not-dark:text-(--neutral-600) px-2 pt-1.5;
+  }
+  fieldset {
+    @apply space-y-2;
+  }
+  .switch_btn {
+    @apply py-2.5 px-2 rounded-lg hover:bg-(--neutral-700) not-dark:hover:bg-gray-200 text-preset-7 w-full focus-visible:focus-dropdown-btn not-dark:focus-visible:dark-focus-dropdown-btn text-left;
+  }
+  .dropdownMenu {
+    @apply absolute right-0 mt-2.5 bg-(--neutral-800) outline-(--neutral-600) outline-1 rounded-xl text-nowrap py-1.5 px-2 space-y-1 min-w-56 w-full z-20 not-dark:bg-gray-50 not-dark:outline-gray-200 not-dark:text-(--neutral-900) drop-shadow-md not-dark:drop-shadow-black;
+  }
+  .theme_toggle {
+    @apply p-1 rounded-full inset-shadow-2xs outline-none transition-all duration-300 ease-in-out focus-visible:focus-white not-dark:focus-visible:dark-focus-white;
+  }
+  .theme_toggle_icon {
+    @apply p-2 rounded-full w-fit shadow-2xl *:h-5 *:w-auto outline-1 dark:outline-(--neutral-700) not-dark:outline-(--neutral-200);
+  }
+  .sound_btn {
+    @apply bg-(--neutral-900) hover:bg-(--neutral-800) not-dark:hover:bg-(--neutral-200) text-white not-dark:bg-white not-dark:text-(--neutral-900) outline-1 outline-(--neutral-300) not-dark:outline-(--neutral-700) p-2.5 rounded-full *:w-auto *:h-4.5 focus-visible:focus-white inline-flex not-dark:focus-visible:dark-focus-white;
+  }
+  hr {
+    @apply border border-(--neutral-600);
+  }
+  .unit_options {
+    @apply space-y-1;
+  }
+  .unit_options button {
+    @apply text-preset-7 py-2.5 px-2 flex gap-2.5 justify-between text-(--neutral-000) rounded-lg w-full hover:bg-(--neutral-700) focus-visible:focus-dropdown-btn not-dark:focus-visible:dark-focus-dropdown-btn not-dark:text-(--neutral-900) not-dark:hover:bg-gray-200;
+  }
+  .active {
+    @apply bg-(--neutral-700) not-dark:bg-gray-200;
+  }
+
+  /* BUTTON */
+  .primary_btn {
+    @apply bg-(--blue-500) hover:bg-(--blue-700) rounded-xl p-4 text-preset-5 font-medium focus-visible:focus-blue text-white drop-shadow-lg not-dark:drop-shadow-gray-400;
+  }
+
+  /* SEARCH BAR */
+  .searchBar {
+    @apply bg-(--neutral-800) hover:bg-(--neutral-700) text-(--neutral-200) w-full rounded-xl py-4 px-[3.7rem] focus-visible:focus-white not-dark:focus-visible:dark-focus-white not-dark:bg-white not-dark:hover:bg-gray-50 not-dark:placeholder:text-(--neutral-700) not-dark:text-(--neutral-900) drop-shadow-lg not-dark:drop-shadow-gray-400;
+  }
+  .small_text {
+    @apply text-preset-8 text-(--neutral-300) not-dark:text-(--neutral-600);
+  }
+
+  /* WEATHER INFO */
+  .weather_info {
+    @apply w-full bg-no-repeat rounded-[1.25rem] flex flex-col md:flex-row gap-4 items-center justify-between px-6 py-10 md:py-[5.125rem] min-h-[17.875rem] drop-shadow-lg not-dark:drop-shadow-gray-400;
+  }
+  .location_info {
+    @apply space-y-4 text-center md:text-left z-20 not-dark:text-(--neutral-800);
+  }
+  .temp_container {
+    @apply flex items-center gap-5;
+  }
+  .temp_icon {
+    @apply h-auto w-20 sm:w-[7.5rem];
+  }
+
+  /* WEATHER DETAILS */
+  .weather_details {
+    @apply grid grid-cols-2 md:grid-cols-4 gap-4;
+  }
+  .detail {
+    @apply bg-(--neutral-800) text-(--neutral-000) outline-(--neutral-600) outline-1 p-5 rounded-xl space-y-4 not-dark:bg-white not-dark:outline-gray-200 drop-shadow-lg not-dark:drop-shadow-gray-400;
+  }
+  .toggle_extras {
+    @apply bg-(--blue-500) text-white w-full text-center py-2 rounded-lg hover:bg-(--blue-700) text-preset-6 col-span-full drop-shadow-lg not-dark:drop-shadow-gray-500 focus-visible:focus-blue;
+  }
+
+  /* DAILY FORECAST */
+  .daily_icon {
+    @apply w-[3.75rem] h-auto bg-(--neutral-900)/50 rounded-full;
+  }
+  .forecast {
+    @apply min-h-[10.3125rem] bg-(--neutral-800) outline-(--neutral-600) outline-1 px-2.5 py-4 rounded-xl gap-4 flex flex-col items-center not-dark:bg-white not-dark:outline-gray-200 not-dark:text-(--neutral-900) drop-shadow-lg not-dark:drop-shadow-gray-400;
+  }
+  .temp_range {
+    @apply flex justify-between text-preset-7 w-full;
+  }
+
+  /* HOURLY FORECAST */
+  .widget_bg {
+    @apply bg-(--neutral-800)/80 p-6 rounded-[1.25rem] max-h-[48rem] flex flex-col gap-4 not-dark:bg-white/80 drop-shadow-2xl h-fit backdrop-blur-sm w-full;
+  }
+  .days_dropdown {
+    @apply capitalize flex items-center text-preset-7 bg-(--neutral-600) hover:bg-(--neutral-700) rounded-lg py-2 px-4 gap-3 focus-visible:focus-white not-dark:focus-visible:dark-focus-white not-dark:bg-gray-100 not-dark:outline-gray-200 not-dark:text-(--neutral-900) not-dark:hover:bg-gray-200 drop-shadow-lg not-dark:drop-shadow-gray-400;
+  }
+  .day_button {
+    @apply py-2.5 px-2 w-full text-left hover:bg-(--neutral-600) not-dark:hover:bg-gray-200 rounded-lg capitalize text-preset-7;
+  }
+  .hour_card {
+    @apply min-h-[3.75rem] bg-(--neutral-700) flex gap-2 justify-between items-center py-3 px-2.5 rounded-lg outline-(--neutral-600) outline-1 not-dark:bg-gray-100 not-dark:outline-gray-200 not-dark:text-(--neutral-900) drop-shadow-lg not-dark:drop-shadow-gray-400 mx-2;
+  }
+  .hour_icon {
+    @apply w-10 h-auto bg-(--neutral-800) not-dark:bg-(--neutral-900)/50 rounded-full;
+  }
+  .scrollable_container {
+    overflow-y: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollable_container::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* FAVORITE PAGE */
+  .location_list {
+    @apply flex items-center justify-between p-4 rounded-lg shadow-lg transition-all duration-300;
+  }
+  .no_locations {
+    @apply text-center p-12 border border-dashed border-(--neutral-300) rounded-lg text-xl text-(--neutral-200) not-dark:text-(--neutral-800);
+  }
+
+  /* COMPARE LOCATION PAGE */
+  .comparison_btn {
+    @apply bg-(--blue-500) hover:bg-(--blue-700) text-white px-3 py-2.5 rounded-lg flex items-center gap-2 transition-colors font-medium shadow-lg shadow-blue-600/20 text-preset-7 md:text-preset-6;
+  }
+  .current_location_btn {
+    @apply text-preset-7 md:text-preset-6 bg-(--neutral-600) hover:bg-(--neutral-800) text-white px-3 py-2.5 rounded-lg flex items-center gap-2 transition-colors font-medium;
+  }
+  .compare_card {
+    @apply bg-gradient-to-br from-(--neutral-800) to-(--neutral-900) not-dark:from-(--neutral-000) not-dark:to-(--neutral-000) rounded-lg p-6 border border-(--neutral-700) not-dark:border-(--neutral-200) shadow-2xl relative overflow-hidden;
+  }
+  .compare_card_hover {
+    @apply absolute inset-0 bg-gradient-to-br from-(--blue-500)/10 to-(--blue-700)/10 not-dark:from-(--blue-200)/10 not-dark:to-(--blue-300)/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300;
+  }
+  .compare_card_location_name {
+    @apply text-xl font-bold text-white not-dark:text-(--neutral-900) mb-1;
+  }
+  .modal {
+    @apply relative bg-(--neutral-900) not-dark:bg-white px-4 py-6 rounded-lg shadow-xl shadow-(color:--neutral-700) ring-(--blue-500)/50 ring-1 w-full max-w-lg mx-8;
+  }
+  .close_btn {
+    @apply absolute -top-2 -right-2 bg-red-500 hover:bg-white text-white ring-1 ring-red-500 hover:text-red-500 rounded-md p-1 transition;
+  }
+  .locations_list {
+    @apply p-3 rounded-lg outline-1 outline-(--neutral-200) dark:outline-(--neutral-700) flex gap-4 justify-between hover:py-5 hover:bg-(--neutral-800)/50 not-dark:hover:bg-(--neutral-200)/50 transition-all;
+  }
+  .add_location_btn {
+    @apply outline-1 rounded-sm p-2 not-dark:text-(--neutral-900) hover:bg-white hover:text-(--neutral-900)  not-dark:hover:bg-(--neutral-900) not-dark:hover:text-white transition-colors font-bold;
+  }
+  .empty_slot {
+    @apply bg-(--neutral-800)/30 not-dark:bg-(--neutral-800)/10 rounded-2xl border-2 border-dashed border-(--neutral-700) not-dark:border-(--neutral-300) flex items-center justify-center min-h-[400px] cursor-pointer hover:border-slate-600 hover:bg-(--neutral-800)/50 not-dark:hover:bg-(--neutral-300)/50 transition-all;
+  }
+
+  /* BEST TIME WIDGET */
+  .time_range_indicator {
+    @apply flex justify-between text-sm text-(--neutral-200) not-dark:text-(--neutral-700) mt-8 pt-2 border-t border-(--neutral-300) not-dark:border-(--neutral-700);
+  }
+  .optimal_window {
+    @apply bg-(--neutral-700) outline-(--neutral-600) outline-1 not-dark:bg-gray-100 not-dark:outline-gray-300 drop-shadow-xl rounded-lg p-4 mb-4;
+  }
+}

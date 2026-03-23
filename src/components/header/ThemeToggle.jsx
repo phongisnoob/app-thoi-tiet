@@ -1,0 +1,95 @@
+import useSound from "use-sound";
+import { AnimatePresence, motion } from "motion/react";
+import Tippy from "@tippyjs/react";
+import { useSettings, useTheme } from "../../hooks";
+import toggle from "/sounds/switch.mp3";
+import { IconMoon, IconSun, IconSunMoon } from "@tabler/icons-react";
+
+const bgClasses = {
+  light: "bg-white",
+  auto: "bg-(--blue-500)",
+  dark: "bg-(--neutral-900)",
+};
+
+const ThemeToggle = () => {
+  const { isDark, toggleTheme, userPreference } = useTheme();
+  const { isSoundEnabled } = useSettings();
+  const tippyContent =
+    userPreference === "auto"
+      ? "System Theme"
+      : isDark
+      ? "Dark Theme"
+      : "Light Theme";
+
+  const [playOn] = useSound(toggle, {
+    volume: 0.5,
+    playbackRate: 1.3,
+    interrupt: true,
+    soundEnabled: isSoundEnabled,
+  });
+
+  const [playOff] = useSound(toggle, {
+    volume: 0.5,
+    playbackRate: 1.6,
+    interrupt: true,
+    soundEnabled: isSoundEnabled,
+  });
+
+  const handleToggle = () => {
+    if (isDark) {
+      playOff();
+    } else {
+      playOn();
+    }
+
+    toggleTheme();
+  };
+
+  const iconContent =
+    userPreference === "auto" ? (
+      <IconSunMoon size={20} className="text-white" />
+    ) : isDark ? (
+      <IconMoon size={20} className="text-gray-300" />
+    ) : (
+      <IconSun size={20} className="text-orange-500" />
+    );
+
+  const dynamicClasses = `${bgClasses[userPreference] || bgClasses.light}`;
+
+  return (
+    <Tippy content={tippyContent}>
+      <motion.button
+        whileTap={{ scale: 0.95 }}
+        className={`${
+          isDark ? "bg-(--neutral-300)/30" : "bg-gray-300/70"
+        } theme_toggle`}
+        onClick={handleToggle}
+        aria-label="Toggle Theme"
+        aria-pressed={isDark}
+        onKeyDown={(e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            handleToggle();
+          }
+        }}
+      >
+        <div className={`${dynamicClasses} theme_toggle_icon`}>
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={userPreference}
+              initial={{ scale: 0.5, rotate: -90, opacity: 0 }}
+              animate={{ scale: 1, rotate: 0, opacity: 1 }}
+              exit={{ scale: 0.5, rotate: 90, opacity: 0 }}
+              transition={{ duration: 0.25, stiffness: 500, damping: 30 }}
+              className="flex items-center justify-center"
+            >
+              {iconContent}
+            </motion.div>
+          </AnimatePresence>
+        </div>
+      </motion.button>
+    </Tippy>
+  );
+};
+
+export default ThemeToggle;
