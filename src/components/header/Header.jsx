@@ -7,6 +7,7 @@ import {
   SettingsDropdown,
   SoundToggle,
   ThemeToggle,
+  LanguageToggle,
 } from ".";
 import { Logo } from "../basic";
 import { IconArrowsUpDown, IconBulb } from "@tabler/icons-react";
@@ -63,6 +64,8 @@ const Header = () => {
           <ThemeToggle />
 
           <SoundToggle />
+
+          <LanguageToggle />
         </div>
 
         <SettingsDropdown />

@@ -18,6 +18,10 @@ i18n
       }
     },
     fallbackLng: 'en',
+    detection: {
+      order: ['localStorage'],
+      caches: ['localStorage']
+    },
     interpolation: {
       escapeValue: false // React already escapes by default
     }

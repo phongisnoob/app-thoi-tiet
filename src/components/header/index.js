@@ -6,6 +6,7 @@ import Header from "./Header";
 import SoundToggle from "./SoundToggle";
 import NavBar from "./NavBar";
 import MobileNavLink from "./MobileNavLink";
+import LanguageToggle from "./LanguageToggle";
 
 export {
   FavoriteDropdown,
@@ -16,4 +17,5 @@ export {
   SoundToggle,
   NavBar,
   MobileNavLink,
+  LanguageToggle,
 };

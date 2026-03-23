@@ -9,7 +9,7 @@ import {
   IconX,
 } from "@tabler/icons-react";
 import { useTranslation } from "react-i18next";
-import { ThemeToggle, SoundToggle, MobileNavLink } from ".";
+import { ThemeToggle, SoundToggle, MobileNavLink, LanguageToggle } from ".";
 
 const NAV_LINKS = [
   {
@@ -116,6 +116,7 @@ const NavBar = () => {
             >
               <ThemeToggle />
               <SoundToggle />
+              <LanguageToggle />
             </motion.li>
 
             {NAV_LINKS.map((link) => {

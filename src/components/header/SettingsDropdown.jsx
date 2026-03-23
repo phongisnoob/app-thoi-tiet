@@ -13,7 +13,7 @@ import { SettingFieldset } from ".";
 const SettingsDropdown = () => {
   const [isOpen, setIsOpen] = useState(false);
   const settingsDropdownRef = useRef();
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   const allFields = [
     {
@@ -61,11 +61,6 @@ const SettingsDropdown = () => {
     setUnits(newUnits);
   }, [setUnits, units.temperature_unit]);
 
-  const toggleLanguage = useCallback(() => {
-    const nextLang = i18n.language?.startsWith('vi') ? 'en' : 'vi';
-    i18n.changeLanguage(nextLang);
-  }, [i18n]);
-
   return (
     <div ref={settingsDropdownRef} className="relative">
       <motion.button
@@ -78,7 +73,7 @@ const SettingsDropdown = () => {
         className="settings_dropdown"
       >
         <Gear className="size-3.5 md:size-4" />
-        <span>{t("nav.settings_units")} / {t("nav.settings_language")}</span>
+        <span>{t("nav.settings_units")}</span>
         <Dropdown isOpen={isOpen} />
       </motion.button>
 
@@ -96,15 +91,6 @@ const SettingsDropdown = () => {
             aria-label="Unit settings"
           >
             <div className="flex flex-col p-1 gap-1">
-              <button
-                onClick={toggleLanguage}
-                className="switch_btn mb-0"
-                type="button"
-                aria-label="Switch language"
-              >
-                {i18n.language?.startsWith('vi') ? t("nav.settings_language_en") : t("nav.settings_language_vi")}
-              </button>
-
               <button
                 onClick={toggleSystem}
                 className="switch_btn mb-0"
