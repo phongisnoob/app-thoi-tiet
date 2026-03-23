@@ -4,7 +4,7 @@ import useWeatherStore from "../../../store/weatherStore";
 import { Dropdown } from "../../basic/Icons";
 import { useTranslation } from "react-i18next";
 
-const DaysDropdown = ({ today, selectedDay, setSelectedDay }) => {
+const DaysDropdown = ({ hourlyForecasts, selectedDayIndex, setSelectedDayIndex }) => {
   const { t, i18n } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
   const daysDropdownRef = useRef();
@@ -12,15 +12,17 @@ const DaysDropdown = ({ today, selectedDay, setSelectedDay }) => {
 
   const isFetching = useWeatherStore((state) => state.isFetching);
 
-  const daysInWeek = Array.from({length: 7}).map((_, i) => {
-    // 2021-11-01 is Monday
-    const d = new Date(Date.UTC(2021, 10, i + 1));
-    return new Intl.DateTimeFormat(i18n.language?.startsWith('vi') ? "vi-VN" : "en-US", { weekday: "long" }).format(d).toLowerCase();
+  // Generate options based on actual forecast chunks
+  const dropdownOptions = hourlyForecasts.map((chunk, index) => {
+    if (index === 0) return { index, label: t("weather.today") };
+    
+    const d = new Date(chunk[0].time);
+    const dayName = new Intl.DateTimeFormat(i18n.language?.startsWith('vi') ? "vi-VN" : "en-US", { weekday: "long" }).format(d);
+    return { index, label: dayName };
   });
 
   // Determine display text for the trigger button
-  const isToday =
-    selectedDay === today ? t("weather.today") : selectedDay;
+  const displayLabel = dropdownOptions.find(opt => opt.index === selectedDayIndex)?.label || t("weather.today");
 
   const { toggleDropdown } = useClickOutside(daysDropdownRef, setIsOpen);
 
@@ -42,7 +44,7 @@ const DaysDropdown = ({ today, selectedDay, setSelectedDay }) => {
         aria-controls="days-dropdown-menu"
         aria-haspopup="true"
       >
-        <span>{isFetching ? "-" : isToday}</span>
+        <span className="capitalize">{isFetching ? "-" : displayLabel}</span>
         <Dropdown isOpen={isOpen} aria-hidden="true" />
       </button>
 
@@ -54,20 +56,18 @@ const DaysDropdown = ({ today, selectedDay, setSelectedDay }) => {
           className="py-2 flex flex-col gap-1 z-10 dropdownMenu"
           tabIndex="-1"
         >
-          {daysInWeek.map((day) => (
-            <li key={day}>
+          {dropdownOptions.map((opt) => (
+            <li key={opt.index}>
               <button
                 role="menuitem"
                 onClick={() => {
-                  setSelectedDay(day);
+                  setSelectedDayIndex(opt.index);
                   setIsOpen(false);
                 }}
-                aria-label={`Select ${
-                  day.charAt(0).toUpperCase() + day.slice(1)
-                }`}
-                className="day_button"
+                aria-label={`Select ${opt.label}`}
+                className="day_button capitalize"
               >
-                {day}
+                {opt.label}
               </button>
             </li>
           ))}

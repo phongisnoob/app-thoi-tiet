@@ -30,12 +30,7 @@ const HourlyForecast = () => {
   const { current, hourly } =
     useWeatherStore((state) => state.weatherData) || {};
 
-  const date = new Date(current?.time ?? Date.now());
-  const today = new Intl.DateTimeFormat(i18n.language?.startsWith('vi') ? "vi-VN" : "en-US", { weekday: "long" })
-    .format(date)
-    .toLowerCase();
-
-  const [selectedDay, setSelectedDay] = useState(today);
+  const [selectedDayIndex, setSelectedDayIndex] = useState(0);
 
   // Combine into a single array of objects
   const hourlyForecasts = useMemo(() => {
@@ -57,24 +52,17 @@ const HourlyForecast = () => {
     return chunks;
   }, [hourly]);
 
-  // Find the forecast data for the selected day once and filter past hours for 'Today'
+  // Get the forecast data for the selected day and filter past hours for 'Today'
   const selectedDayData = useMemo(() => {
-    const day = hourlyForecasts.find((dayChunk) =>
-      new Intl.DateTimeFormat(i18n.language?.startsWith('vi') ? "vi-VN" : "en-US", { weekday: "long" })
-        .format(new Date(dayChunk[0].time))
-        .toLowerCase()
-        .includes(selectedDay.toLowerCase())
-    );
+    if (hourlyForecasts.length === 0) return [];
 
-    if (!day) {
-      return [];
-    }
+    const day = hourlyForecasts[selectedDayIndex];
+
+    if (!day) return [];
 
     const currentHour = new Date(current?.time ?? Date.now()).getHours();
 
-    const isToday = selectedDay === today;
-
-    if (isToday) {
+    if (selectedDayIndex === 0) {
       return day.filter((hourData) => {
         const forecastHour = new Date(hourData.time).getHours();
         return forecastHour >= currentHour;
@@ -82,7 +70,7 @@ const HourlyForecast = () => {
     }
 
     return day;
-  }, [current, hourlyForecasts, selectedDay, today]);
+  }, [current, hourlyForecasts, selectedDayIndex]);
 
   return (
     <section className="widget_bg" aria-labelledby="hourly-forecast-heading">
@@ -94,14 +82,14 @@ const HourlyForecast = () => {
           {t("weather.hourly_forecast")}
         </h3>
         <DaysDropdown
-          today={today}
-          selectedDay={selectedDay}
-          setSelectedDay={setSelectedDay}
+          hourlyForecasts={hourlyForecasts}
+          selectedDayIndex={selectedDayIndex}
+          setSelectedDayIndex={setSelectedDayIndex}
         />
       </div>
 
       <motion.ul
-        key={selectedDay}
+        key={selectedDayIndex}
         ref={listRef}
         variants={containerVariants}
         initial="hidden"
