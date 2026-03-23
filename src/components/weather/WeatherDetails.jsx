@@ -37,15 +37,16 @@ const WeatherDetails = () => {
   const { t } = useTranslation();
   const [showExtras, setShowExtras] = useState(false);
   const isFetching = useWeatherStore((state) => state.isFetching);
-
+  const weatherData = useWeatherStore((state) => state.weatherData);
   const { essentials, extras } = useWeatherDetails();
+  const shouldShowSkeleton = isFetching && !weatherData?.current;
 
   return (
     <section className="weather_details">
       {essentials.map((details) => (
         <WeatherDetailCard
           key={details.label}
-          isFetching={isFetching}
+          isFetching={shouldShowSkeleton}
           {...details}
         />
       ))}
@@ -74,7 +75,7 @@ const WeatherDetails = () => {
                 variants={itemVariants}
                 className={details.className || "col-span-1"}
               >
-                <WeatherDetailCard isFetching={isFetching} {...details} />
+                <WeatherDetailCard isFetching={shouldShowSkeleton} {...details} />
               </motion.div>
             ))}
           </motion.div>

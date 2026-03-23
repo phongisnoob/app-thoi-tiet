@@ -107,7 +107,7 @@ const WeatherInfo = () => {
     removeFavoriteLocation,
   ]);
 
-  if (isFetching) {
+  if (isFetching && !current) {
     return (
       <section className="weather_info bg-(color:--neutral-800) not-dark:bg-white flex flex-col justify-center items-center h-full not-dark:text-black text-white">
         <Loading />

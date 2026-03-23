@@ -20,14 +20,13 @@ const DailyForecast = () => {
         {Array(DAYS_IN_A_WEEK)
           .fill(null)
           .map((_, index) => {
-            const hasData = daily?.time?.[index];
-
-            const shouldDisplayData = !isFetching && hasData;
+            const hasData = !!daily?.time?.[index];
+            const shouldDisplayData = hasData;
 
             return (
               <DailyForecastCard
                 key={index}
-                isFetching={isFetching}
+                isFetching={isFetching && !hasData}
                 day={
                   shouldDisplayData
                     ? new Intl.DateTimeFormat(i18n.language?.startsWith('vi') ? "vi-VN" : "en-US", {
