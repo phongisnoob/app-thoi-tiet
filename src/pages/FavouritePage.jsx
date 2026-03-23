@@ -32,7 +32,7 @@ const FavouritePage = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.3 }}
       >
-        <BackButton>Manage Favorites</BackButton>
+        <BackButton>Quản lý mục yêu thích</BackButton>
       </motion.div>
 
       <div className="space-y-4 text-white not-dark:text-(--neutral-900)">
@@ -48,10 +48,10 @@ const FavouritePage = () => {
                 <IconStar size={48} aria-hidden="true" />
               </div>
               <p className="text-lg">
-                You haven&apos;t saved any locations yet.
+                Bạn chưa lưu vị trí nào.
               </p>
               <p className="text-sm">
-                Save locations by clicking the star icon on the main page
+                Lưu các vị trí bằng cách nhấp vào biểu tượng ngôi sao trên trang chính
               </p>
             </div>
           </motion.div>
@@ -87,7 +87,7 @@ const FavouritePage = () => {
                         {location.admin1}
                         {isCurrent && (
                           <span className="ml-2 font-medium">
-                            (Current View)
+                            (Đang xem)
                           </span>
                         )}
                       </span>
@@ -108,7 +108,7 @@ const FavouritePage = () => {
                             : "text-red-400 hover:bg-red-900/50 not-dark:hover:bg-red-100"
                         }
                       `}
-                      aria-label={`Remove ${location.name} from favorites`}
+                      aria-label={`Xóa ${location.name} khỏi mục yêu thích`}
                     >
                       <IconTrash size={20} aria-hidden="true" />
                     </button>

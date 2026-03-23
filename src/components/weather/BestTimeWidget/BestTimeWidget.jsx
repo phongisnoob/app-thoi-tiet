@@ -22,7 +22,7 @@ const BestTimeWidget = () => {
             id="best-time-widget-heading"
             className="text-preset-5 text-(--neutral-000) not-dark:text-(--neutral-900)"
           >
-            Best Time Outside Today
+            Thời điểm ra ngoài tốt nhất hôm nay
           </h3>
         </div>
 

@@ -11,7 +11,7 @@ const DailyForecast = () => {
   return (
     <section className="space-y-5">
       <h3 className="text-preset-5 text-(--neutral-000) not-dark:text-(--neutral-900)">
-        Daily Forecast
+        Dự báo hàng ngày
       </h3>
 
       <div className="grid grid-cols-[repeat(auto-fit,minmax(5.5rem,1fr))] gap-4">
@@ -28,7 +28,7 @@ const DailyForecast = () => {
                 isFetching={isFetching}
                 day={
                   shouldDisplayData
-                    ? new Intl.DateTimeFormat(navigator.language, {
+                    ? new Intl.DateTimeFormat("vi-VN", {
                         weekday: "short",
                       }).format(new Date(daily.time[index]))
                     : ""

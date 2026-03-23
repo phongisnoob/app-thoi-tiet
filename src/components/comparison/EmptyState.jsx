@@ -14,11 +14,10 @@ const EmptyState = ({ onAddLocation }) => {
           <IconMapPin className="text-slate-400" />
         </div>
         <h2 className="text-preset-5 md:text-preset-4 font-bold text-(--neutral-900) dark:text-white mb-3">
-          No Locations to Compare
+          Không có vị trí nào để so sánh
         </h2>
         <p className="text-(--neutral-600) dark:text-(--neutral-200) mb-6 max-w-md text-preset-7 md:text-preset-6">
-          Start comparing weather conditions by adding locations using the
-          button above
+          Bắt đầu so sánh điều kiện thời tiết bằng cách thêm vị trí qua nút bên trên
         </p>
         <motion.button
           whileHover={{ scale: 1.05 }}
@@ -27,7 +26,7 @@ const EmptyState = ({ onAddLocation }) => {
           className="comparison_btn mx-auto"
         >
           <IconPlus size={20} />
-          <span>Add Your First Location</span>
+          <span>Thêm vị trí đầu tiên</span>
         </motion.button>
       </div>
     </motion.div>

@@ -17,7 +17,7 @@ const UpdatePrompt = () => {
       className="fixed z-999 top-4 right-4 bg-white py-2 px-4 rounded shadow-lg flex flex-col items-center gap-3 border border-gray-100 max-w-xs"
       aria-live="polite"
     >
-      <p>A new app update is available!</p>
+      <p>Có bản cập nhật mới cho ứng dụng!</p>
 
       <button
         className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium 
@@ -25,14 +25,14 @@ const UpdatePrompt = () => {
                    shadow-md"
         onClick={handleRefresh}
       >
-        Reload Now
+        Tải lại ngay
       </button>
 
       <button
         className="w-full text-gray-500 hover:text-gray-700 text-xs mt-1"
         onClick={() => setNeedRefresh(false)}
       >
-        Later
+        Để sau
       </button>
     </div>
   );

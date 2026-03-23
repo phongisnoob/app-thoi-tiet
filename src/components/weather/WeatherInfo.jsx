@@ -79,13 +79,13 @@ const WeatherInfo = () => {
     hour12: true,
   };
   const formattedDate = new Intl.DateTimeFormat(
-    navigator.language,
+    "vi-VN",
     options
   ).format(currentTime);
 
   const handleAddFavorite = useCallback(() => {
     if (!location) {
-      notifyError("Select a location.");
+      notifyError("Hãy chọn một vị trí.");
       return;
     }
 
@@ -109,7 +109,7 @@ const WeatherInfo = () => {
     return (
       <section className="weather_info bg-(color:--neutral-800) not-dark:bg-white flex flex-col justify-center items-center h-full not-dark:text-black text-white">
         <Loading />
-        <p>Loading...</p>
+        <p>Đang tải...</p>
       </section>
     );
   }
@@ -130,7 +130,7 @@ const WeatherInfo = () => {
         {/* Favorite/Save Button */}
         <button
           className="focus-visible:*:scale-125 focus-visible:*:stroke-yellow-400"
-          aria-label="Add to Favorites"
+          aria-label="Thêm vào danh sách yêu thích"
           onClick={handleAddFavorite}
         >
           <IconStar
@@ -151,7 +151,7 @@ const WeatherInfo = () => {
           <img
             className="temp_icon"
             src={`/assets/images/weather/icon-${weather_icon}.webp`}
-            alt="Weather icon"
+            alt="Biểu tượng thời tiết"
           />
         )}
         <span className={"text-preset-1 not-dark:text-(--neutral-800)"}>

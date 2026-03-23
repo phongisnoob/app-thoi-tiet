@@ -97,7 +97,7 @@ const SearchBar = ({
               setInputValue(e.target.value);
             }}
             className="searchBar"
-            placeholder="Search for a place..."
+            placeholder="Tìm kiếm một địa điểm..."
           />
 
           {supported && (
@@ -113,7 +113,7 @@ const SearchBar = ({
               {fetchingLocations ? (
                 <li className="day_button flex gap-2.5">
                   <Loader className="animate-spin" />
-                  <span className="text-preset-7">Search in progress</span>
+                  <span className="text-preset-7">Đang tìm kiếm</span>
                 </li>
               ) : (
                 locations?.length > 0 &&
@@ -138,7 +138,7 @@ const SearchBar = ({
                 (locations?.length === 0 || locations === undefined) && (
                   <li className="day_button">
                     <span className="text-preset-7">
-                      No results found for &quot;{inputValue}&quot;
+                      Không tìm thấy kết quả cho &quot;{inputValue}&quot;
                     </span>
                   </li>
                 )}
@@ -152,16 +152,16 @@ const SearchBar = ({
             className="w-full md:w-fit primary_btn disabled:bg-gray-500 disabled:cursor-not-allowed"
             disabled={isFetching}
           >
-            Search
+            Tìm kiếm
           </button>
 
-          <Tippy content="Current Location">
+          <Tippy content="Vị trí hiện tại">
             <button
               onClick={handleCurrentLocation}
               className="primary_btn group disabled:bg-gray-500 disabled:cursor-not-allowed"
               type="button"
               disabled={isFetching}
-              aria-label="Current Location"
+              aria-label="Vị trí hiện tại"
             >
               <IconCurrentLocation className="group-hover:rotate-90 duration-500 transition-transform" />
             </button>

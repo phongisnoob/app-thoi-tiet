@@ -4,13 +4,13 @@ import useWeatherStore from "../../../store/weatherStore";
 import { Dropdown } from "../../basic/Icons";
 
 const days = [
-  "monday",
-  "tuesday",
-  "wednesday",
-  "thursday",
-  "friday",
-  "saturday",
-  "sunday",
+  "thứ hai",
+  "thứ ba",
+  "thứ tư",
+  "thứ năm",
+  "thứ sáu",
+  "thứ bảy",
+  "chủ nhật",
 ];
 
 const DaysDropdown = ({ today, selectedDay, setSelectedDay }) => {
@@ -22,7 +22,7 @@ const DaysDropdown = ({ today, selectedDay, setSelectedDay }) => {
 
   // Determine display text for the trigger button
   const isToday =
-    selectedDay === today ? "Today" : days[days.indexOf(selectedDay)];
+    selectedDay === today ? "Hôm nay" : days[days.indexOf(selectedDay)];
 
   const { toggleDropdown } = useClickOutside(daysDropdownRef, setIsOpen);
 

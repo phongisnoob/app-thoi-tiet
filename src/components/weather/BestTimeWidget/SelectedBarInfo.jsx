@@ -35,7 +35,7 @@ const SelectedBarInfo = ({ selectedBar, hourlyScores, tempUnit }) => {
           {/* Weather Score */}
           <div
             className={`font-bold ${getScoreTextColor(score)}`}
-            aria-label={`Weather Score: ${Math.round(score)} out of 100`}
+            aria-label={`Điểm thời tiết: ${Math.round(score)} trên 100`}
           >
             {Math.round(score)}/100
           </div>
@@ -46,13 +46,13 @@ const SelectedBarInfo = ({ selectedBar, hourlyScores, tempUnit }) => {
           className="text-xs text-(--neutral-200) not-dark:text-(--neutral-600) mt-1"
           aria-label={
             precipitation > 0
-              ? `Rain: ${precipitation.toFixed(1)} millimeters`
-              : "Rain expectation: Dry conditions."
+              ? `Mưa: ${precipitation.toFixed(1)} mm`
+              : "Dự báo: Trời khô ráo."
           }
         >
           {precipitation > 0
-            ? `Rain: ${precipitation.toFixed(1)}mm`
-            : "Dry conditions expected."}
+            ? `Mưa: ${precipitation.toFixed(1)}mm`
+            : "Dự báo trời khô ráo."}
         </div>
       </div>
     </motion.div>

@@ -1,8 +1,8 @@
 const legend = [
-  { label: "Excellent", color: "bg-green-500" },
-  { label: "Good", color: "bg-yellow-500" },
-  { label: "Fair", color: "bg-orange-500" },
-  { label: "Poor", color: "bg-red-500" },
+  { label: "Tuyệt vời", color: "bg-green-500" },
+  { label: "Tốt", color: "bg-yellow-500" },
+  { label: "Khá", color: "bg-orange-500" },
+  { label: "Kém", color: "bg-red-500" },
 ];
 const ScoreLegend = () => {
   return (

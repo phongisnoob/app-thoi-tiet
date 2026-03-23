@@ -13,17 +13,17 @@ import { ThemeToggle, SoundToggle, MobileNavLink } from ".";
 const NAV_LINKS = [
   {
     Icon: IconStar,
-    label: "Favourite Locations",
+    label: "Vị trí yêu thích",
     to: "/favourites",
   },
   {
     Icon: IconArrowsUpDown,
-    label: "Compare Locations",
+    label: "So sánh vị trí",
     to: "/compare",
   },
   {
     Icon: IconBulb,
-    label: "Weather Insights",
+    label: "Thông tin thời tiết",
     to: "/insights",
   },
 ];
@@ -78,7 +78,7 @@ const NavBar = () => {
         aria-expanded={isOpen}
         aria-controls="mobile-menu"
         aria-haspopup="true"
-        aria-label="Toggle menu"
+        aria-label="Bật/tắt menu"
       >
         <AnimatePresence mode="wait">
           <motion.span

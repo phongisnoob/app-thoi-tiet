@@ -17,7 +17,7 @@ const SmartRecommendations = () => {
     >
       <div className="text-preset-5 text-(--neutral-000) not-dark:text-(--neutral-900) flex items-center gap-2">
         <IconBulb size={24} className="inline mb-1" aria-hidden="true" />
-        <h3 id="recommendations-heading">Smart Recommendations</h3>
+        <h3 id="recommendations-heading">Đề xuất thông minh</h3>
       </div>
       <div className="space-y-3">
         {recommendations.map((rec, idx) => (

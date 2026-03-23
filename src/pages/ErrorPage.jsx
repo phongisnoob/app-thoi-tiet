@@ -7,15 +7,14 @@ const ErrorPage = () => {
       <section className="main space-y-8 xl:space-y-12 flex flex-col items-center text-center gap-6 lg:mt-[1.125rem]">
         <img
           src={errorIcon}
-          alt="Error icon"
+          alt="Biểu tượng lỗi"
           className="mx-auto h-auto w-[2.625rem]"
         />
         <h1 className="text-3xl sm:text-4xl md:text-[3.25rem] text-preset-2 not-dark:text-(--neutral-900)">
-          Something went wrong
+          Đã xảy ra lỗi
         </h1>
         <p className="text-base sm:text-lg md:text-xl text-preset-5 font-medium text-(--neutral-800) dark:text-(--neutral-200)">
-          We couldn&apos;t connect to the server (API error). Please try again in a
-          few moments.
+          Không thể kết nối với máy chủ (lỗi API). Vui lòng thử lại sau vài giây.
         </p>
         <button
           onClick={() => window.location.reload()}
@@ -25,7 +24,7 @@ const ErrorPage = () => {
             className="group-hover:rotate-180 duration-500 transition-transform"
             src={retryIcon}
           />
-          <span className="text-preset-7">Retry</span>
+          <span className="text-preset-7">Thử lại</span>
         </button>
       </section>
     </>

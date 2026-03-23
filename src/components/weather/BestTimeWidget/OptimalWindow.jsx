@@ -21,7 +21,7 @@ const OptimalWindow = () => {
             id="optimal-window-heading"
             className="text-(--neutral-200) not-dark:text-(--neutral-600) text-sm mb-1"
           >
-            Optimal 2 hour Window
+            Khoảng thời gian 2 giờ tốt nhất
           </p>
           <p className="text-white not-dark:text-(--neutral-900) text-2xl font-bold">
             {analysis.bestTime}
@@ -30,11 +30,11 @@ const OptimalWindow = () => {
           {/* Additional context */}
           <div className="space-y-1 text-sm">
             <p className="text-(--neutral-200) not-dark:text-(--neutral-600)">
-              Around {analysis.avgTemp}
+              Khoảng {analysis.avgTemp}
               {tempUnit} • {analysis.condition}
             </p>
             <p className={`font-semibold ${getScoreTextColor(analysis.score)}`}>
-              {getScoreLabel(analysis.score)} conditions for outdoor activities
+              Điều kiện {getScoreLabel(analysis.score).toLowerCase()} cho các hoạt động ngoài trời
             </p>
           </div>
         </div>

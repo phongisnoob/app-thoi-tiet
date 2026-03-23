@@ -53,7 +53,7 @@ const WeatherDetails = () => {
         className="toggle_extras"
         onClick={() => setShowExtras((prev) => !prev)}
       >
-        {showExtras ? "Hide Details" : "Show All Details"}
+        {showExtras ? "Ẩn chi tiết" : "Hiển thị tất cả chi tiết"}
       </button>
 
       <AnimatePresence>

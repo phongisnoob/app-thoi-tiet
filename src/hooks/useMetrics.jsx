@@ -56,37 +56,37 @@ const useMetrics = (location) => {
 
   const metricsData = [
     {
-      label: "Humidity",
+      label: "Độ ẩm",
       icon: <IconDropletHalf2Filled size={18} />,
       value: `${roundUp(location.current.relative_humidity_2m)}%`,
       key: "humidity",
     },
     {
-      label: "Wind",
+      label: "Gió",
       icon: <IconWind size={18} />,
       value: `${windSpeed} ${windSpeedUnit}`,
       key: "wind",
     },
     {
-      label: "Visibility",
+      label: "Tầm nhìn",
       icon: <IconEye size={18} />,
       value: `${visibilityValue} ${visibilityUnit}`,
       key: "visibility",
     },
     {
-      label: "Pressure",
+      label: "Áp suất",
       icon: <IconGauge size={18} />,
       value: `${roundUp(location.current.surface_pressure)} hPa`,
       key: "pressure",
     },
     {
-      label: "UV Index",
+      label: "Chỉ số UV",
       icon: <IconSun size={18} />,
       value: getUvLevel(location.current.uv_index),
       key: "uvindex",
     },
     {
-      label: "Precipitation",
+      label: "Lượng mưa",
       icon: <IconTemperature size={18} />, // Note: IconTemperature is often used for general temp, consider IconCloudRain
       value: `${precipitationValue} ${precipitationUnit}`,
       key: "precipitation",

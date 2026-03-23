@@ -7,7 +7,7 @@
  */
 export const formatHour = (time) => {
   return new Date(0, 0, 0, time)
-    .toLocaleTimeString(navigator.language, {
+    .toLocaleTimeString("vi-VN", {
       hour: "numeric",
       hour12: true,
     })

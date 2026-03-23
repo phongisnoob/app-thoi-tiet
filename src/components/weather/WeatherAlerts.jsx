@@ -50,7 +50,7 @@ const WeatherAlerts = () => {
                 whileTap={{ scale: 0.9 }}
                 onClick={() => dismissAlert(alert.id)}
                 className="flex-shrink-0 hover:bg-white/20 rounded-lg p-1.5 transition-colors"
-                aria-label={`Dismiss ${alert.title.split(" ")[1]} alert`}
+                aria-label={`Bỏ qua cảnh báo ${alert.title.split(" ")[1]}`}
               >
                 <IconX size={20} strokeWidth={2.5} aria-hidden="true" />
               </motion.button>

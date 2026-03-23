@@ -9,28 +9,28 @@ import { SettingFieldset } from ".";
 
 const allFields = [
   {
-    legend: "Temperature",
+    legend: "Nhiệt độ",
     options: [
-      { label: "Celsius (°C)", value: "celsius", type: "temperature_unit" },
+      { label: "Độ C (°C)", value: "celsius", type: "temperature_unit" },
       {
-        label: "Fahrenheit (°F)",
+        label: "Độ F (°F)",
         value: "fahrenheit",
         type: "temperature_unit",
       },
     ],
   },
   {
-    legend: "Wind Speed",
+    legend: "Tốc độ gió",
     options: [
       { label: "km/h", value: "kmh", type: "wind_speed_unit" },
       { label: "mph", value: "mph", type: "wind_speed_unit" },
     ],
   },
   {
-    legend: "Precipitation",
+    legend: "Lượng mưa",
     options: [
-      { label: "Millimeters (mm)", value: "mm", type: "precipitation_unit" },
-      { label: "Inches (in)", value: "inch", type: "precipitation_unit" },
+      { label: "Milimét (mm)", value: "mm", type: "precipitation_unit" },
+      { label: "Inch (in)", value: "inch", type: "precipitation_unit" },
     ],
   },
 ];
@@ -73,7 +73,7 @@ const SettingsDropdown = () => {
         className="settings_dropdown"
       >
         <Gear className="size-3.5 md:size-4" />
-        <span>Units</span>
+        <span>Đơn vị</span>
         <Dropdown isOpen={isOpen} />
       </motion.button>
 
@@ -97,8 +97,8 @@ const SettingsDropdown = () => {
               aria-label="Switch unit system"
             >
               {units.temperature_unit === "celsius"
-                ? "Switch to Imperial"
-                : "Switch to Metric"}
+                ? "Chuyển sang Hệ Anh (Imperial)"
+                : "Chuyển sang Hệ Mét (Metric)"}
             </button>
 
             {allFields.map((field) => (

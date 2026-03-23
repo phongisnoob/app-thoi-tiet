@@ -42,16 +42,16 @@ const useWeatherAlerts = () => {
     if (current.apparent_temperature > HEAT_THRESHOLD) {
       alerts.push({
         id: "extreme-heat",
-        title: "🌡️ Extreme Heat Warning",
-        message: `Temperature feels like ${displayTemp}${displayUnit}. Stay hydrated and avoid prolonged sun exposure.`,
+        title: "🌡️ Cảnh báo nắng nóng",
+        message: `Nhiệt độ cảm nhận là ${displayTemp}${displayUnit}. Hãy uống đủ nước và tránh tiếp xúc lâu với ánh nắng mặt trời.`,
         color: "bg-red-700",
         borderColor: "border-red-500",
       });
     } else if (current.apparent_temperature <= FREEZING_THRESHOLD) {
       alerts.push({
         id: "freezing",
-        title: "🥶 Freezing Temperatures",
-        message: `Temperature feels like ${displayTemp}${displayUnit}. Bundle up!`,
+        title: "🥶 Nhiệt độ đóng băng",
+        message: `Nhiệt độ cảm nhận là ${displayTemp}${displayUnit}. Hãy mặc đủ ấm!`,
         color: "bg-blue-700",
         borderColor: "border-blue-500",
       });
@@ -61,10 +61,10 @@ const useWeatherAlerts = () => {
     if (current.precipitation > RAIN_THRESHOLD) {
       alerts.push({
         id: "heavy-rain",
-        title: "🌧️ Heavy Rain Alert",
-        message: `Rainfall is ${current.precipitation.toFixed(
+        title: "🌧️ Cảnh báo mưa lớn",
+        message: `Lượng mưa đạt ${current.precipitation.toFixed(
           1
-        )}${RAIN_UNIT} high. Don't forget your umbrella!`,
+        )}${RAIN_UNIT}. Đừng quên mang theo ô/dù!`,
         color: "bg-blue-600",
         borderColor: "border-blue-400",
       });
@@ -73,10 +73,10 @@ const useWeatherAlerts = () => {
     if (current.wind_speed_10m > WIND_THRESHOLD) {
       alerts.push({
         id: "strong-wind",
-        title: "💨 Strong Wind Warning",
-        message: `Wind speeds at ${Math.round(
+        title: "💨 Cảnh báo gió giật mạnh",
+        message: `Tốc độ gió lúc này là ${Math.round(
           current.wind_speed_10m
-        )} ${WIND_UNIT}. Secure loose objects.`,
+        )} ${WIND_UNIT}. Hãy chằng chống đồ vật cẩn thận.`,
         color: "bg-orange-700",
         borderColor: "border-orange-500",
       });
@@ -86,8 +86,8 @@ const useWeatherAlerts = () => {
     if (current.uv_index > 7) {
       alerts.push({
         id: "high-uv",
-        title: "☀️ High UV Index",
-        message: `UV Index: ${current.uv_index}. Wear sunscreen and protective clothing.`,
+        title: "☀️ Chỉ số UV cao",
+        message: `Chỉ số UV: ${current.uv_index}. Hãy thoa kem chống nắng và mặc áo khoác bảo vệ.`,
         color: "bg-yellow-800",
         borderColor: "border-yellow-600",
       });
@@ -97,10 +97,10 @@ const useWeatherAlerts = () => {
     if (current.visibility < VISIBILITY_THRESHOLD) {
       alerts.push({
         id: "poor-visibility",
-        title: "🌁 Poor Visibility",
-        message: `Visibility less than ${
+        title: "🌁 Tầm nhìn hạn chế",
+        message: `Tầm nhìn dưới ${
           VISIBILITY_THRESHOLD / 1000
-        } ${VISIBILITY_UNIT}. Drive carefully!`,
+        } ${VISIBILITY_UNIT}. Hãy lái xe cẩn thận!`,
         color: "bg-gray-700",
         borderColor: "border-gray-500",
       });

@@ -33,7 +33,7 @@ const EmptySlot = ({ onClick }) => {
           <IconPlus size={32} className="text-(--neutral-200)" />
         </motion.div>
         <p className="text-(--neutral-300) not-dark:text-(--neutral-600) font-medium">
-          Add location to compare
+          Thêm vị trí để so sánh
         </p>
       </div>
     </motion.div>

@@ -33,7 +33,7 @@ const ComparisonPage = () => {
 
       if (!locationToAdd) {
         const position = await getCurrentPositionPromise();
-        notifyInfo("Fetching weather for current location...");
+        notifyInfo("Đang lấy thông tin thời tiết vị trí hiện tại...");
         locationToAdd = await fetchGeolocationWeather(position);
       }
 
@@ -45,16 +45,16 @@ const ComparisonPage = () => {
         );
 
         if (isAlreadyAdded) {
-          notifyError("Current location is already in the comparison list.");
+          notifyError("Vị trí hiện tại đã có trong danh sách so sánh.");
         } else {
           await addCompareLocation(locationToAdd);
         }
       } else {
-        notifyError("Could not retrieve current location data.");
+        notifyError("Không thể lấy dữ liệu vị trí hiện tại.");
       }
     } catch (error) {
       notifyError(
-        error.message || "Failed to add current location to comparison."
+        error.message || "Không thể thêm vị trí hiện tại vào so sánh."
       );
     }
   };

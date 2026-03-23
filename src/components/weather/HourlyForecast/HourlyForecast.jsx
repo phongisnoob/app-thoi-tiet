@@ -29,7 +29,7 @@ const HourlyForecast = () => {
     useWeatherStore((state) => state.weatherData) || {};
 
   const date = new Date(current?.time ?? Date.now());
-  const today = new Intl.DateTimeFormat(navigator.language, { weekday: "long" })
+  const today = new Intl.DateTimeFormat("vi-VN", { weekday: "long" })
     .format(date)
     .toLowerCase();
 
@@ -58,7 +58,7 @@ const HourlyForecast = () => {
   // Find the forecast data for the selected day once and filter past hours for 'Today'
   const selectedDayData = useMemo(() => {
     const day = hourlyForecasts.find((dayChunk) =>
-      new Intl.DateTimeFormat(navigator.language, { weekday: "long" })
+      new Intl.DateTimeFormat("vi-VN", { weekday: "long" })
         .format(new Date(dayChunk[0].time))
         .toLowerCase()
         .includes(selectedDay.toLowerCase())
@@ -89,7 +89,7 @@ const HourlyForecast = () => {
           id="hourly-forecast-heading"
           className="text-preset-5 text-(--neutral-000) not-dark:text-(--neutral-900)"
         >
-          Hourly forecast
+          Dự báo hàng giờ
         </h3>
         <DaysDropdown
           today={today}
@@ -119,7 +119,7 @@ const HourlyForecast = () => {
                   time={null}
                   min_temp={null}
                   scrollRootRef={null}
-                  altText={"Loading data"}
+                  altText={"Đang tải dữ liệu"}
                 />
               ))
           : selectedDayData.map((hourData, index) => {

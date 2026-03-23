@@ -32,7 +32,7 @@ const useVoiceSearch = () => {
 
     const recognition = new SpeechRecognition();
     recognition.continuous = false;
-    recognition.lang = navigator.language || "en-US";
+    recognition.lang = "vi-VN";
     recognition.interimResults = false;
     recognition.maxAlternatives = 1;
 

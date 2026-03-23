@@ -9,7 +9,7 @@ const InsightsCTA = () => {
     <motion.button
       whileHover={{ scale: 1.02 }}
       whileTap={{ scale: 0.98 }}
-      aria-label="Plan Your Day: Go to personalized weather insights page"
+      aria-label="Lên kế hoạch trong ngày: Đi tới trang thông tin thời tiết được cá nhân hóa"
       className="widget_bg cursor-pointer border-2 border-transparent hover:border-blue-500/50 transition-all duration-300 group"
       onClick={() => navigate("/insights")}
     >
@@ -21,10 +21,10 @@ const InsightsCTA = () => {
 
           <div className="text-left">
             <h3 className="font-bold text-lg mb-1 text-(--neutral-900) dark:text-white">
-              Plan Your Day
+              Lên kế hoạch trong ngày
             </h3>
             <p className="text-sm text-(--neutral-600) dark:text-(--neutral-400)">
-              Get personalized insights and best times to go outside
+              Nhận thông tin cá nhân hóa và thời điểm ra ngoài tốt nhất
             </p>
           </div>
         </div>

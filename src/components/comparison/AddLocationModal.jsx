@@ -71,7 +71,7 @@ const AddLocationModal = ({ setShowModal }) => {
         </button>
 
         <h3 className="text-(--neutral-900) dark:text-(--neutral-200) mb-4 text-preset-5">
-          Add location
+          Thêm vị trí
         </h3>
 
         <form
@@ -86,7 +86,7 @@ const AddLocationModal = ({ setShowModal }) => {
               type="text"
               className="searchBar"
               autoCorrect="off"
-              placeholder="Enter any location..."
+              placeholder="Nhập tên một vị trí..."
               value={inputValue}
               onChange={(e) => setInputValue(e.target.value)}
             />
@@ -103,7 +103,7 @@ const AddLocationModal = ({ setShowModal }) => {
             className="primary_btn"
             disabled={fetchingLocations}
           >
-            {fetchingLocations ? "Searching..." : "Search"}
+            {fetchingLocations ? "Đang tìm..." : "Tìm kiếm"}
           </button>
         </form>
 
@@ -132,7 +132,7 @@ const AddLocationModal = ({ setShowModal }) => {
                     onClick={() => addNewLocation(loc)}
                     className="add_location_btn"
                   >
-                    Add
+                    Thêm
                   </button>
                 </li>
               ))}
@@ -143,7 +143,7 @@ const AddLocationModal = ({ setShowModal }) => {
         {!fetchingLocations && locations === undefined && (
           <p className="p-2 mt-4 text-center not-dark:text-(--neutral-900)">
             <span className="text-preset-7">
-              No results found for &quot;{inputValue}&quot;
+              Không tìm thấy kết quả cho &quot;{inputValue}&quot;
             </span>
           </p>
         )}

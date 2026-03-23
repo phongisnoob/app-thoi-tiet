@@ -38,14 +38,14 @@ const HourlyTimeline = ({ selectedBar, setSelectedBar }) => {
           id="hourly-timeline-label"
           className="text-(--neutral-200) not-dark:text-(--neutral-600) text-sm font-medium"
         >
-          Next {hourlyScores.length} hour{hourlyScores.length === 1 ? "" : "s"}
+          {hourlyScores.length} giờ tới
         </h4>
         <div
           className="flex items-center gap-1 text-xs text-(--neutral-200) not-dark:text-(--neutral-600)"
           aria-label="Instruction for interacting with hourly forecast"
         >
           <IconInfoCircle size={14} aria-hidden="true" />
-          <span>Tap bars for details</span>
+          <span>Nhấn vào thanh trên biểu đồ để xem chi tiết</span>
         </div>
       </div>
 

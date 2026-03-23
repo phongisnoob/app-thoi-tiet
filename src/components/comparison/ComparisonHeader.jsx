@@ -15,7 +15,7 @@ const ComparisonHeader = ({
       className="max-w-7xl mx-auto mb-8"
     >
       <div className="flex flex-col md:flex-row justify-between md:items-center gap-4 mb-6">
-        <BackButton>Compare Locations</BackButton>
+        <BackButton>So sánh vị trí</BackButton>
 
         {compareCount < 3 && (
           <div className="flex flex-wrap gap-2 self-end">
@@ -27,7 +27,7 @@ const ComparisonHeader = ({
               disabled={isAddingLocation}
             >
               <IconPlus size={20} />
-              <span>Add Location</span>
+              <span>Thêm vị trí</span>
             </motion.button>
 
             <motion.button
@@ -38,7 +38,7 @@ const ComparisonHeader = ({
               disabled={isAddingLocation}
             >
               <IconMapPin size={20} />
-              <span>Current Location</span>
+              <span>Vị trí hiện tại</span>
             </motion.button>
           </div>
         )}
@@ -52,11 +52,11 @@ const ComparisonHeader = ({
           className="bg-slate-800/50 not-dark:bg-(--neutral-200)/20 backdrop-blur-sm rounded-lg p-4 border border-slate-700"
         >
           <p className="text-(--neutral-200) not-dark:text-(--neutral-800) text-sm">
-            Comparing{" "}
+            Đang so sánh{" "}
             <span className="text-white not-dark:text-(--neutral-900) font-semibold">
               {compareCount}
             </span>{" "}
-            location{compareCount !== 1 ? "s" : ""}
+            vị trí
           </p>
         </motion.div>
       )}
