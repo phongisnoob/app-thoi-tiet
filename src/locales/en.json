@@ -21,11 +21,14 @@
   },
   "home": {
     "headline": "Weather Now",
-    "search_placeholder": "Search for a place...",
-    "search_button": "Search",
+    "no_results": "No results found for \"{{query}}\""
+  },
+  "search": {
+    "placeholder": "Search for a place...",
+    "button": "Search",
     "current_location": "Current Location",
     "no_results": "No results found for \"{{query}}\"",
-    "search_in_progress": "Search in progress"
+    "searching": "Searching..."
   },
   "weather": {
     "feels_like": "Feels Like",
@@ -112,7 +115,8 @@
     "high_uv": "☀️ High UV Index",
     "high_uv_msg": "UV Index: {{val}}. Wear sunscreen and protective clothing.",
     "poor_visibility": "🌁 Poor Visibility",
-    "poor_visibility_msg": "Visibility less than {{val}} {{unit}}. Drive carefully!"
+    "poor_visibility_msg": "Visibility less than {{val}} {{unit}}. Drive carefully!",
+    "dismiss_aria": "Dismiss alert"
   },
   "score": {
     "excellent": "Excellent",
@@ -122,7 +126,89 @@
   },
   "pwa": {
     "update_available": "A new app update is available!",
-    "reload": "Reload Now",
-    "later": "Later"
+    "refresh_now": "Reload Now",
+    "dismiss": "Later"
+  },
+  "metrics": {
+    "humidity": "Humidity",
+    "wind": "Wind",
+    "visibility": "Visibility",
+    "pressure": "Pressure",
+    "uv_index": "UV Index",
+    "precipitation": "Precipitation"
+  },
+  "details": {
+    "feels_like": "Feels Like",
+    "humidity": "Humidity",
+    "wind": "Wind",
+    "precipitation": "Precipitation",
+    "sunrise": "Sunrise",
+    "sunset": "Sunset",
+    "uv_index": "UV Index",
+    "visibility": "Visibility",
+    "pressure": "Air Pressure",
+    "cloud_cover": "Cloud Cover"
+  },
+  "recommendations": {
+    "storm": "Storm warning - stay indoors and avoid going out",
+    "extreme_wind": "Extreme wind gusts ({{speed}}{{unit}})",
+    "snow_clothes": "Keep warm - need warm clothes and waterproof shoes",
+    "heavy_jacket": "Heavy jacket recommended",
+    "light_jacket": "Light jacket or sweater",
+    "light_clothes": "Light, breathable clothes",
+    "fog": "Limited visibility - drive carefully and use headlights",
+    "umbrella": "Remember to bring an umbrella",
+    "raincoat_needed": "Heavy rain forecast - umbrella may not be effective, wear a raincoat",
+    "drizzle": "Light drizzle forecast - umbrella recommended",
+    "rain_umbrella": "Rain expected - remember to bring an umbrella",
+    "rain_chance": "{{val}}% chance of rain - remember to bring an umbrella",
+    "high_wind": "High wind ({{speed}}{{unit}})",
+    "sunscreen": "Remember to apply sunscreen (UV: {{uv}})",
+    "hydration": "Stay hydrated",
+    "good_weather": "Great weather for outdoor activities!"
+  },
+  "weather_codes": {
+    "0": "Clear sky",
+    "1": "Mainly clear",
+    "2": "Partly cloudy",
+    "3": "Overcast",
+    "45": "Fog",
+    "48": "Depositing rime fog",
+    "51": "Light drizzle",
+    "53": "Moderate drizzle",
+    "55": "Dense drizzle",
+    "56": "Light freezing drizzle",
+    "57": "Dense freezing drizzle",
+    "61": "Slight rain",
+    "63": "Moderate rain",
+    "65": "Heavy rain",
+    "66": "Light freezing rain",
+    "67": "Heavy freezing rain",
+    "71": "Slight snow fall",
+    "73": "Moderate snow fall",
+    "75": "Heavy snow fall",
+    "77": "Snow grains",
+    "80": "Slight rain showers",
+    "81": "Moderate rain showers",
+    "82": "Violent rain showers",
+    "85": "Slight snow showers",
+    "86": "Heavy snow showers",
+    "95": "Thunderstorm",
+    "96": "Thunderstorm with slight hail",
+    "99": "Thunderstorm with heavy hail"
+  },
+  "uv_levels": {
+    "0": "Low",
+    "1": "Low",
+    "2": "Low",
+    "3": "Moderate",
+    "4": "Moderate",
+    "5": "Moderate",
+    "6": "High",
+    "7": "High",
+    "8": "Very High",
+    "9": "Very High",
+    "10": "Very High",
+    "11": "Extreme"
   }
 }

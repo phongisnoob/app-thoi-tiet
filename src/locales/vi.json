@@ -21,11 +21,14 @@
   },
   "home": {
     "headline": "Thời tiết hôm nay thế nào?",
-    "search_placeholder": "Tìm kiếm một địa điểm...",
-    "search_button": "Tìm kiếm",
+    "no_results": "Không tìm thấy kết quả cho \"{{query}}\""
+  },
+  "search": {
+    "placeholder": "Tìm kiếm một địa điểm...",
+    "button": "Tìm kiếm",
     "current_location": "Vị trí hiện tại",
     "no_results": "Không tìm thấy kết quả cho \"{{query}}\"",
-    "search_in_progress": "Đang tìm kiếm"
+    "searching": "Đang tìm kiếm"
   },
   "weather": {
     "feels_like": "Cảm giác như",
@@ -112,7 +115,8 @@
     "high_uv": "☀️ Chỉ số UV cao",
     "high_uv_msg": "Chỉ số UV: {{val}}. Hãy thoa kem chống nắng và mặc áo khoác bảo vệ.",
     "poor_visibility": "🌁 Tầm nhìn hạn chế",
-    "poor_visibility_msg": "Tầm nhìn dưới {{val}} {{unit}}. Hãy lái xe cẩn thận!"
+    "poor_visibility_msg": "Tầm nhìn dưới {{val}} {{unit}}. Hãy lái xe cẩn thận!",
+    "dismiss_aria": "Bỏ qua cảnh báo"
   },
   "score": {
     "excellent": "Tuyệt vời",
@@ -122,7 +126,89 @@
   },
   "pwa": {
     "update_available": "Có bản cập nhật mới cho ứng dụng!",
-    "reload": "Tải lại ngay",
-    "later": "Để sau"
+    "refresh_now": "Tải lại ngay",
+    "dismiss": "Để sau"
+  },
+  "metrics": {
+    "humidity": "Độ ẩm",
+    "wind": "Gió",
+    "visibility": "Tầm nhìn",
+    "pressure": "Áp suất",
+    "uv_index": "Chỉ số UV",
+    "precipitation": "Lượng mưa"
+  },
+  "details": {
+    "feels_like": "Cảm giác như",
+    "humidity": "Độ ẩm",
+    "wind": "Gió",
+    "precipitation": "Lượng mưa",
+    "sunrise": "Bình minh",
+    "sunset": "Hoàng hôn",
+    "uv_index": "Chỉ số UV",
+    "visibility": "Tầm nhìn",
+    "pressure": "Áp suất không khí",
+    "cloud_cover": "Mây che phủ"
+  },
+  "recommendations": {
+    "storm": "Cảnh báo giông bão - ở trong nhà và tránh ra đường",
+    "extreme_wind": "Gió giật mạnh ({{speed}}{{unit}})",
+    "snow_clothes": "Cần đồ giữ ấm - áo ấm và giày chống nước",
+    "heavy_jacket": "Khuyên dùng áo khoác dày",
+    "light_jacket": "Áo khoác mỏng hoặc áo len",
+    "light_clothes": "Quần áo mỏng, thoáng mát",
+    "fog": "Tầm nhìn hạn chế - lái xe cẩn thận và bật đèn pha",
+    "umbrella": "Nhớ mang theo ô (dù)",
+    "raincoat_needed": "Dự báo mưa to - ô có thể không hiệu quả, hãy mặc áo mưa",
+    "drizzle": "Dự báo mưa phùn nhẹ - khuyên dùng ô",
+    "rain_umbrella": "Dự báo có mưa - nhớ mang theo ô",
+    "rain_chance": "{{val}}% khả năng có mưa - nhớ mang theo ô",
+    "high_wind": "Gió mạnh ({{speed}}{{unit}})",
+    "sunscreen": "Nhớ bôi kem chống nắng (UV: {{uv}})",
+    "hydration": "Giữ cơ thể đủ nước",
+    "good_weather": "Thời tiết tuyệt vời cho các hoạt động ngoài trời!"
+  },
+  "weather_codes": {
+    "0": "Trời quang",
+    "1": "Chủ yếu quang mây",
+    "2": "Có mây vài nơi",
+    "3": "U ám",
+    "45": "Sương mù",
+    "48": "Sương mù đóng băng",
+    "51": "Mưa phùn nhẹ",
+    "53": "Mưa phùn vừa",
+    "55": "Mưa phùn dày đặc",
+    "56": "Mưa phùn đóng băng nhẹ",
+    "57": "Mưa phùn đóng băng dày đặc",
+    "61": "Mưa nhỏ",
+    "63": "Mưa vừa",
+    "65": "Mưa to",
+    "66": "Mưa đóng băng nhẹ",
+    "67": "Mưa đóng băng to",
+    "71": "Tuyết rơi nhẹ",
+    "73": "Tuyết rơi vừa",
+    "75": "Tuyết rơi dày",
+    "77": "Mưa hạt tuyết",
+    "80": "Mưa rào nhẹ",
+    "81": "Mưa rào vừa",
+    "82": "Mưa rào dữ dội",
+    "85": "Mưa tuyết nhẹ",
+    "86": "Mưa tuyết dày",
+    "95": "Giông bão",
+    "96": "Giông bão kèm mưa đá nhỏ",
+    "99": "Giông bão kèm mưa đá to"
+  },
+  "uv_levels": {
+    "0": "Thấp",
+    "1": "Thấp",
+    "2": "Thấp",
+    "3": "Trung bình",
+    "4": "Trung bình",
+    "5": "Trung bình",
+    "6": "Cao",
+    "7": "Cao",
+    "8": "Rất cao",
+    "9": "Rất cao",
+    "10": "Rất cao",
+    "11": "Đỉnh điểm"
   }
 }
