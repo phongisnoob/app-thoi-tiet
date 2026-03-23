@@ -31,9 +31,6 @@ A simple and responsive weather application that allows users to search for real
 ---
 
 ## 📷 Screenshot
-
-*(Add your screenshot here)*
-Example:
 ![App Screenshot](./application-screenshot.png)
 
 ---
