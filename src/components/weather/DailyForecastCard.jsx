@@ -1,3 +1,5 @@
+import { motion } from "motion/react";
+
 const DailyForecastCard = ({ day, icon, min_temp, max_temp, isFetching }) => {
   return (
     <div className="forecast">
@@ -15,7 +17,13 @@ const DailyForecastCard = ({ day, icon, min_temp, max_temp, isFetching }) => {
         <>
           <p className="text-preset-6">{day}</p>
           {icon && (
-            <img
+            <motion.img
+              initial={{ scale: 1, y: 0 }}
+              animate={{ scale: 1.1, y: [-2, 2, -2] }}
+              transition={{
+                scale: { duration: 2.5, repeat: Infinity, repeatType: "reverse" },
+                y: { duration: 3, repeat: Infinity, ease: "easeInOut" }
+              }}
               alt="Weather icon"
               className="daily_icon"
               src={`/assets/images/weather/icon-${icon}.webp`}

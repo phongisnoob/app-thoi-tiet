@@ -148,7 +148,13 @@ const WeatherInfo = () => {
 
       <div className="temp_container z-20">
         {weather_icon && (
-          <img
+          <motion.img
+            initial={{ scale: 1, y: 0 }}
+            animate={{ scale: 1.1, y: [-5, 5, -5] }}
+            transition={{
+              scale: { duration: 3, repeat: Infinity, repeatType: "reverse" },
+              y: { duration: 4, repeat: Infinity, ease: "easeInOut" }
+            }}
             className="temp_icon"
             src={`/assets/images/weather/icon-${weather_icon}.webp`}
             alt="Biểu tượng thời tiết"

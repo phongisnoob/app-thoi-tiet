@@ -51,12 +51,11 @@ const ComparisonCard = ({ location }) => {
 
             <div className="flex items-center gap-2">
               <motion.div
-                initial={{ scale: 1 }}
-                animate={{ scale: 1.2 }}
+                initial={{ scale: 1, y: 0 }}
+                animate={{ scale: 1.1, y: [-3, 3, -3] }}
                 transition={{
-                  duration: 2.5,
-                  repeat: Infinity,
-                  repeatType: "reverse",
+                  scale: { duration: 2.5, repeat: Infinity, repeatType: "reverse" },
+                  y: { duration: 3, repeat: Infinity, ease: "easeInOut" }
                 }}
               >
                 <img

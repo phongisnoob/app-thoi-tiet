@@ -60,7 +60,13 @@ const HourlyWeatherCard = ({
       role="listitem"
     >
       {icon && (
-        <img
+        <motion.img
+          initial={{ scale: 1, y: 0 }}
+          animate={{ scale: 1.1, y: [-2, 2, -2] }}
+          transition={{
+            scale: { duration: 2.5, repeat: Infinity, repeatType: "reverse" },
+            y: { duration: 3, repeat: Infinity, ease: "easeInOut", delay: index * 0.1 }
+          }}
           alt={altText || "Weather condition icon"}
           className="hour_icon"
           src={`/assets/images/weather/icon-${icon}.webp`}
