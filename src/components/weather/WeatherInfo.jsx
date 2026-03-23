@@ -119,11 +119,10 @@ const WeatherInfo = () => {
       variants={cloudContainerVariants}
       initial="hidden"
       animate="visible"
-      className={`weather_info relative overflow-hidden ${
-        current?.is_day
+      className={`weather_info relative overflow-hidden ${current?.is_day
           ? "not-dark:bg-(image:--day-gradient) bg-(image:--night-gradient)"
           : "dark:bg-(image:--night-gradient) not-dark:bg-(image:--day-gradient)"
-      }`}
+        }`}
     >
       <BgNoise />
       <div className={"location_info"}>
@@ -134,9 +133,8 @@ const WeatherInfo = () => {
           onClick={handleAddFavorite}
         >
           <IconStar
-            className={`${
-              isSaved ? "fill-yellow-400 stroke-yellow-400" : ""
-            } absolute top-8 sm:top-10 left-8 w-8 h-8 lg:hover:fill-yellow-400 lg:hover:stroke-yellow-400 transition-all`}
+            className={`${isSaved ? "fill-yellow-400 stroke-yellow-400" : ""
+              } absolute top-8 sm:top-10 left-8 w-8 h-8 lg:hover:fill-yellow-400 lg:hover:stroke-yellow-400 transition-all`}
           />
         </button>
 
