@@ -11,7 +11,7 @@ import { useTranslation } from "react-i18next";
  * @returns {Function} dismissAlert: function to mark an alert id as dismissed.
  */
 const useWeatherAlerts = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const weatherData = useWeatherStore((state) => state.weatherData);
   const units = useWeatherStore((state) => state.units);
 
@@ -103,7 +103,7 @@ const useWeatherAlerts = () => {
     }
 
     return alerts.filter((a) => !dismissed.includes(a.id));
-  }, [current, dismissed, units?.temperature_unit]);
+  }, [current, dismissed, units?.temperature_unit, i18n.language]);
 
   const dismissAlert = useCallback((id) => {
     setDismissed((prev) => [...prev, id]);

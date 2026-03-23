@@ -25,7 +25,7 @@ import { useTranslation } from "react-i18next";
  * @returns {Array<{icon: JSX.Element, text: string, color: string}>} Memoized list of recommendation objects to render.
  */
 const useSmartRecommendations = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const weatherData = useWeatherStore((state) => state.weatherData);
   const units = useWeatherStore((state) => state.units);
 
@@ -196,7 +196,7 @@ const useSmartRecommendations = () => {
     }
 
     return recommendationsList;
-  }, [isMetric, weatherData]);
+  }, [isMetric, weatherData, i18n.language]);
 
   return recommendations;
 };

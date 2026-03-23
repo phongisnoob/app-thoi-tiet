@@ -27,7 +27,7 @@ import { useTranslation } from "react-i18next";
  * @returns {Array} extras: remaining items.
  */
 const useWeatherDetails = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const { current } = useWeatherStore((state) => state.weatherData) || {};
   const { daily } = useWeatherStore((state) => state.weatherData) || {};
   const { current_units } = useWeatherStore((state) => state.weatherData) || {};
@@ -98,7 +98,7 @@ const useWeatherDetails = () => {
         icon: <IconCloudFilled className="text-blue-400" />,
       },
     ],
-    [current, current_units, daily, t]
+    [current, current_units, daily, t, i18n.language]
   );
   const essentials = detailsData.slice(0, 4);
   const extras = detailsData.slice(4);
