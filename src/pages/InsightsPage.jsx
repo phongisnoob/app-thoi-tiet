@@ -40,10 +40,10 @@ const InsightsPage = () => {
         className="text-center"
       >
         <h2 className="text-preset-3 font-bold text-(--neutral-900) dark:text-white mb-2">
-          Lên kế hoạch trong ngày {location.name}
+          {t("insights.plan_for_day", { location: location.name })}
         </h2>
         <p className="text-(--neutral-600) dark:text-(--neutral-200)">
-          Thông tin thời tiết được cá nhân hóa giúp bạn tận hưởng ngày của mình
+          {t("insights.cta_desc")}
         </p>
       </motion.div>
 

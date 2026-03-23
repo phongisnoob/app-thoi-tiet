@@ -3,6 +3,7 @@ import useWeatherStore from "../store/weatherStore";
 import { getWeatherDescription } from "../constants/weatherConstants";
 import { formatHour } from "../utils/formatDateTime";
 import { SCORING_CONFIG, scoreHour } from "../utils/weatherScoring";
+import { useTranslation } from "react-i18next";
 
 /**
  * Analyzes hourly weather data to recommend today's best 2-hour window.
@@ -24,6 +25,7 @@ import { SCORING_CONFIG, scoreHour } from "../utils/weatherScoring";
  *   @returns {string} tempUnit: Temperature unit string (°C or °F)
  */
 const useWeatherAnalysis = () => {
+  const { i18n } = useTranslation();
   const units = useWeatherStore((state) => state.units);
   const weatherData = useWeatherStore((state) => state.weatherData);
   const isMetric = units?.temperature_unit === "celsius";
@@ -115,7 +117,7 @@ const useWeatherAnalysis = () => {
       firstHour: scoredHours[0]?.hour,
       lastHour: scoredHours[scoredHours.length - 1]?.hour,
     };
-  }, [isMetric, weatherData]);
+  }, [isMetric, weatherData, i18n.language]);
 
   return { analysis, tempUnit };
 };
