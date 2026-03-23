@@ -9,44 +9,51 @@
     format("truetype");
 }
 @font-face {
-  font-family: "DM Sans";
+  font-family: "Be Vietnam Pro";
   font-style: normal;
   font-weight: 700;
   font-display: swap;
-  src: url("./assets/fonts/DM_Sans/static/DMSans-Bold.ttf") format("truetype");
+  src: url("./assets/fonts/Be_Vietnam_Pro/BeVietnamPro-Bold.ttf") format("truetype");
 }
 @font-face {
-  font-family: "DM Sans";
+  font-family: "Be Vietnam Pro";
   font-style: normal;
   font-weight: 600;
   font-display: swap;
-  src: url("./assets/fonts/DM_Sans/static/DMSans-SemiBold.ttf")
+  src: url("./assets/fonts/Be_Vietnam_Pro/BeVietnamPro-SemiBold.ttf")
     format("truetype");
 }
 @font-face {
-  font-family: "DM Sans";
+  font-family: "Be Vietnam Pro";
   font-style: normal;
   font-weight: 500;
   font-display: swap;
-  src: url("./assets/fonts/DM_Sans/static/DMSans-Medium.ttf") format("truetype");
+  src: url("./assets/fonts/Be_Vietnam_Pro/BeVietnamPro-Medium.ttf") format("truetype");
 }
 @font-face {
-  font-family: "DM Sans";
+  font-family: "Be Vietnam Pro";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("./assets/fonts/Be_Vietnam_Pro/BeVietnamPro-Regular.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Be Vietnam Pro";
   font-style: normal;
   font-weight: 300;
   font-display: swap;
-  src: url("./assets/fonts/DM_Sans/static/DMSans-Light.ttf") format("truetype");
+  src: url("./assets/fonts/Be_Vietnam_Pro/BeVietnamPro-Light.ttf") format("truetype");
 }
 @font-face {
-  font-family: "DM Sans";
+  font-family: "Be Vietnam Pro";
   font-style: italic;
   font-weight: 600;
   font-display: swap;
-  src: url("./assets/fonts/DM_Sans/static/DMSans-SemiBoldItalic.ttf")
+  src: url("./assets/fonts/Be_Vietnam_Pro/BeVietnamPro-SemiBoldItalic.ttf")
     format("truetype");
 }
 @theme {
-  --font-sans: "DM Sans", sans-serif;
+  --font-sans: "Be Vietnam Pro", sans-serif;
   --font-serif: "Bricolage Grotesque", serif;
 
   --day-bg-start: #c4f6fcdb;
