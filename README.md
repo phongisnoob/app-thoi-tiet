@@ -14,6 +14,10 @@ A simple and responsive weather application that allows users to search for real
 * 🌡️ Display temperature, humidity, and weather conditions
 * ⚡ Fast and responsive interface
 * 🌐 Real-time data from weather API
+* 📍 Detect current location
+* 🌙 Dark mode
+* 📊 Hourly & weekly forecast
+* 💾 Save favorite cities
 
 ---
 
@@ -79,10 +83,12 @@ npm start
 
 ## 📈 Future Improvements
 
-* 📍 Detect current location
-* 🌙 Dark mode
-* 📊 Hourly & weekly forecast
-* 💾 Save favorite cities
+* 💾 Account Login/Saving
+* 💾 Save and sync favorite cities across devices
+* 📝 Add personal notes for each location (e.g., travel plans, reminders)
+* ☁️ Cloud storage integration for user data
+* 🔔 Weather alerts and notifications
+
 
 ---
 
