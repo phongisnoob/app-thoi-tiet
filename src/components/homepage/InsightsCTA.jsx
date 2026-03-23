@@ -1,9 +1,11 @@
 import { useNavigate } from "react-router-dom";
 import { motion } from "motion/react";
 import { IconBulb, IconChevronRight } from "@tabler/icons-react";
+import { useTranslation } from "react-i18next";
 
 const InsightsCTA = () => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   return (
     <motion.button
@@ -21,10 +23,10 @@ const InsightsCTA = () => {
 
           <div className="text-left">
             <h3 className="font-bold text-lg mb-1 text-(--neutral-900) dark:text-white">
-              Lên kế hoạch trong ngày
+              {t("insights.cta_title")}
             </h3>
             <p className="text-sm text-(--neutral-600) dark:text-(--neutral-400)">
-              Nhận thông tin cá nhân hóa và thời điểm ra ngoài tốt nhất
+              {t("insights.cta_desc")}
             </p>
           </div>
         </div>

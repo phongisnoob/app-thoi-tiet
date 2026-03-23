@@ -2,6 +2,7 @@ import { useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import useWeatherStore from "../../store/weatherStore";
 import { useWeatherDetails } from "../../hooks";
+import { useTranslation } from "react-i18next";
 import { WeatherDetailCard } from ".";
 
 const containerVariants = {
@@ -33,6 +34,7 @@ const itemVariants = {
 };
 
 const WeatherDetails = () => {
+  const { t } = useTranslation();
   const [showExtras, setShowExtras] = useState(false);
   const isFetching = useWeatherStore((state) => state.isFetching);
 
@@ -53,7 +55,7 @@ const WeatherDetails = () => {
         className="toggle_extras"
         onClick={() => setShowExtras((prev) => !prev)}
       >
-        {showExtras ? "Ẩn chi tiết" : "Hiển thị tất cả chi tiết"}
+        {showExtras ? t("weather.hide_details") : t("weather.show_details")}
       </button>
 
       <AnimatePresence>
