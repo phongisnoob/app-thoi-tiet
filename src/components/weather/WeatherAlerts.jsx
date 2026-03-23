@@ -1,8 +1,10 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { IconX } from "@tabler/icons-react";
 import { useWeatherAlerts } from "../../hooks";
+import { useTranslation } from "react-i18next";
 
 const WeatherAlerts = () => {
+  const { t } = useTranslation();
   const { activeAlerts, dismissAlert } = useWeatherAlerts();
 
   if (activeAlerts.length === 0) return null;
@@ -50,7 +52,7 @@ const WeatherAlerts = () => {
                 whileTap={{ scale: 0.9 }}
                 onClick={() => dismissAlert(alert.id)}
                 className="flex-shrink-0 hover:bg-white/20 rounded-lg p-1.5 transition-colors"
-                aria-label={`Bỏ qua cảnh báo ${alert.title.split(" ")[1]}`}
+                aria-label={t("alerts.dismiss_aria")}
               >
                 <IconX size={20} strokeWidth={2.5} aria-hidden="true" />
               </motion.button>

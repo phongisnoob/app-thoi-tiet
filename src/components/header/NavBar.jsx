@@ -8,6 +8,7 @@ import {
   IconStar,
   IconX,
 } from "@tabler/icons-react";
+import { useTranslation } from "react-i18next";
 import { ThemeToggle, SoundToggle, MobileNavLink } from ".";
 
 const NAV_LINKS = [
@@ -63,6 +64,7 @@ const itemVariants = {
 };
 
 const NavBar = () => {
+  const { t } = useTranslation();
   const navbarRef = useRef();
   const [isOpen, setIsOpen] = useState(false);
 
@@ -116,15 +118,18 @@ const NavBar = () => {
               <SoundToggle />
             </motion.li>
 
-            {NAV_LINKS.map((link) => (
+            {NAV_LINKS.map((link) => {
+              const label = link.to === "/favourites" ? t("nav.favorites") : (link.to === "/compare" ? t("nav.compare") : t("nav.insights"));
+              return (
               <MobileNavLink
                 key={link.to}
                 Icon={link.Icon}
-                label={link.label}
+                label={label}
                 to={link.to}
                 setIsOpen={setIsOpen}
               />
-            ))}
+              );
+            })}
           </motion.ul>
         )}
       </AnimatePresence>

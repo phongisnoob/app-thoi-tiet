@@ -3,8 +3,10 @@ import { motion } from "motion/react";
 import useWeatherStore from "../store/weatherStore";
 import { BackButton } from "../components/basic";
 import { IconStar, IconTrash } from "@tabler/icons-react";
+import { useTranslation } from "react-i18next";
 
 const FavouritePage = () => {
+  const { t } = useTranslation();
   const favoriteLocations =
     useWeatherStore((state) => state.favoriteLocations) || [];
   const removeFavoriteLocation = useWeatherStore(
@@ -32,7 +34,7 @@ const FavouritePage = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.3 }}
       >
-        <BackButton>Quản lý mục yêu thích</BackButton>
+        <BackButton>{t("favorites.manage")}</BackButton>
       </motion.div>
 
       <div className="space-y-4 text-white not-dark:text-(--neutral-900)">
@@ -48,10 +50,10 @@ const FavouritePage = () => {
                 <IconStar size={48} aria-hidden="true" />
               </div>
               <p className="text-lg">
-                Bạn chưa lưu vị trí nào.
+                {t("favorites.no_saved")}
               </p>
               <p className="text-sm">
-                Lưu các vị trí bằng cách nhấp vào biểu tượng ngôi sao trên trang chính
+                {t("favorites.how_to_save")}
               </p>
             </div>
           </motion.div>
@@ -87,7 +89,7 @@ const FavouritePage = () => {
                         {location.admin1}
                         {isCurrent && (
                           <span className="ml-2 font-medium">
-                            (Đang xem)
+                            ({t("favorites.current_view")})
                           </span>
                         )}
                       </span>
@@ -108,7 +110,7 @@ const FavouritePage = () => {
                             : "text-red-400 hover:bg-red-900/50 not-dark:hover:bg-red-100"
                         }
                       `}
-                      aria-label={`Xóa ${location.name} khỏi mục yêu thích`}
+                      aria-label={t("favorites.remove_aria", { name: location.name })}
                     >
                       <IconTrash size={20} aria-hidden="true" />
                     </button>

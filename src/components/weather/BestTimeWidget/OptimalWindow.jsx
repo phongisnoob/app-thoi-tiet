@@ -4,8 +4,10 @@ import {
   getScoreLabel,
   getScoreTextColor,
 } from "../../../utils/scoreUtils";
+import { useTranslation } from "react-i18next";
 
 const OptimalWindow = () => {
+  const { t } = useTranslation();
   const { analysis, tempUnit } = useWeatherAnalysis();
   if (!analysis) return null;
 
@@ -21,7 +23,7 @@ const OptimalWindow = () => {
             id="optimal-window-heading"
             className="text-(--neutral-200) not-dark:text-(--neutral-600) text-sm mb-1"
           >
-            Khoảng thời gian 2 giờ tốt nhất
+            {t("weather.optimal_window")}
           </p>
           <p className="text-white not-dark:text-(--neutral-900) text-2xl font-bold">
             {analysis.bestTime}
@@ -30,11 +32,10 @@ const OptimalWindow = () => {
           {/* Additional context */}
           <div className="space-y-1 text-sm">
             <p className="text-(--neutral-200) not-dark:text-(--neutral-600)">
-              Khoảng {analysis.avgTemp}
-              {tempUnit} • {analysis.condition}
+              {t("weather.around_temp", { temp: Math.round(analysis.avgTemp), unit: tempUnit })} • {analysis.condition}
             </p>
             <p className={`font-semibold ${getScoreTextColor(analysis.score)}`}>
-              Điều kiện {getScoreLabel(analysis.score).toLowerCase()} cho các hoạt động ngoài trời
+              {t("weather.score_conditions", { score: getScoreLabel(analysis.score).toLowerCase() })}
             </p>
           </div>
         </div>

@@ -1,3 +1,5 @@
+import i18n from "../i18n";
+
 /**
  * WEATHER CODE MAPPINGS (for Open-Meteo)
  */
@@ -91,11 +93,11 @@ export const getWeatherIcon = (code) => {
 
 // Function to get the detailed description from a weather code
 export const getWeatherDescription = (code) => {
-  return WEATHER_CODE_DESCRIPTIONS[code] || "Điều kiện thay đổi";
+  return i18n.t(`weather_codes.${code}`, { defaultValue: WEATHER_CODE_DESCRIPTIONS[code] || "Điều kiện thay đổi" });
 };
 
 // Helper function to retrieve the UV level based on the index number.
 export const getUvLevel = (uvIndex) => {
   const index = Math.min(11, Math.max(0, Math.round(uvIndex)));
-  return UV_INDEX_LEVELS[index] || "Không xác định";
+  return i18n.t(`uv_levels.${index}`, { defaultValue: UV_INDEX_LEVELS[index] || "Không xác định" });
 };

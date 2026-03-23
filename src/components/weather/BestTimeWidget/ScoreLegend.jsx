@@ -1,10 +1,14 @@
-const legend = [
-  { label: "Tuyệt vời", color: "bg-green-500" },
-  { label: "Tốt", color: "bg-yellow-500" },
-  { label: "Khá", color: "bg-orange-500" },
-  { label: "Kém", color: "bg-red-500" },
-];
+import { useTranslation } from "react-i18next";
+
 const ScoreLegend = () => {
+  const { t } = useTranslation();
+
+  const legend = [
+    { label: t("score.excellent"), color: "bg-green-500" },
+    { label: t("score.good"), color: "bg-yellow-500" },
+    { label: t("score.fair"), color: "bg-orange-500" },
+    { label: t("score.poor"), color: "bg-red-500" },
+  ];
   return (
     <div
       className="flex flex-wrap items-center gap-3 text-xs md:text-sm"

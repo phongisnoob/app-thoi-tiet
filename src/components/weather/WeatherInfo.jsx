@@ -2,6 +2,7 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 import useWeatherStore from "../../store/weatherStore";
 import useSound from "use-sound";
 import { motion } from "motion/react";
+import { useTranslation } from "react-i18next";
 
 import { useSettings } from "../../hooks";
 import { getWeatherIcon } from "../../constants/weatherConstants";
@@ -22,6 +23,7 @@ const cloudContainerVariants = {
 };
 
 const WeatherInfo = () => {
+  const { t, i18n } = useTranslation();
   const weatherData = useWeatherStore((state) => state.weatherData) || {};
   const { current } = weatherData;
   const isFetching = useWeatherStore((state) => state.isFetching);
@@ -79,13 +81,13 @@ const WeatherInfo = () => {
     hour12: true,
   };
   const formattedDate = new Intl.DateTimeFormat(
-    "vi-VN",
+    i18n.language?.startsWith('vi') ? "vi-VN" : "en-US",
     options
   ).format(currentTime);
 
   const handleAddFavorite = useCallback(() => {
     if (!location) {
-      notifyError("Hãy chọn một vị trí.");
+      notifyError(t("weather.select_location"));
       return;
     }
 
@@ -109,7 +111,7 @@ const WeatherInfo = () => {
     return (
       <section className="weather_info bg-(color:--neutral-800) not-dark:bg-white flex flex-col justify-center items-center h-full not-dark:text-black text-white">
         <Loading />
-        <p>Đang tải...</p>
+        <p>{t("weather.loading")}</p>
       </section>
     );
   }
@@ -129,7 +131,7 @@ const WeatherInfo = () => {
         {/* Favorite/Save Button */}
         <button
           className="focus-visible:*:scale-125 focus-visible:*:stroke-yellow-400"
-          aria-label="Thêm vào danh sách yêu thích"
+          aria-label={t("weather.add_favorite_aria")}
           onClick={handleAddFavorite}
         >
           <IconStar

@@ -1,5 +1,6 @@
 import { IconPlus } from "@tabler/icons-react";
 import { motion } from "motion/react";
+import { useTranslation } from "react-i18next";
 
 const emptySlotVariants = {
   hidden: { opacity: 0, scale: 0.95 },
@@ -16,6 +17,7 @@ const emptySlotVariants = {
 };
 
 const EmptySlot = ({ onClick }) => {
+  const { t } = useTranslation();
   return (
     <motion.div
       variants={emptySlotVariants}
@@ -33,7 +35,7 @@ const EmptySlot = ({ onClick }) => {
           <IconPlus size={32} className="text-(--neutral-200)" />
         </motion.div>
         <p className="text-(--neutral-300) not-dark:text-(--neutral-600) font-medium">
-          Thêm vị trí để so sánh
+          {t("comparison.add_to_compare", "Thêm vị trí để so sánh")}
         </p>
       </div>
     </motion.div>

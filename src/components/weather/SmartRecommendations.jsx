@@ -1,8 +1,10 @@
 import { motion } from "framer-motion";
 import { IconBulb } from "@tabler/icons-react";
 import { useSmartRecommendations } from "../../hooks";
+import { useTranslation } from "react-i18next";
 
 const SmartRecommendations = () => {
+  const { t } = useTranslation();
   const recommendations = useSmartRecommendations();
 
   if (recommendations.length === 0) return null;
@@ -17,7 +19,7 @@ const SmartRecommendations = () => {
     >
       <div className="text-preset-5 text-(--neutral-000) not-dark:text-(--neutral-900) flex items-center gap-2">
         <IconBulb size={24} className="inline mb-1" aria-hidden="true" />
-        <h3 id="recommendations-heading">Đề xuất thông minh</h3>
+        <h3 id="recommendations-heading">{t("weather.smart_recommendations")}</h3>
       </div>
       <div className="space-y-3">
         {recommendations.map((rec, idx) => (

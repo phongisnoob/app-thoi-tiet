@@ -19,8 +19,10 @@ import {
 } from "../utils/unitConversionUtils";
 import { getUvLevel } from "../constants/weatherConstants";
 import useWeatherStore from "../store/weatherStore";
+import { useTranslation } from "react-i18next";
 
 const useMetrics = (location) => {
+  const { t } = useTranslation();
   const units = useWeatherStore((state) => state.units);
   const isMetric = units.temperature_unit === "celsius";
   const currentData = location.current;
@@ -56,37 +58,37 @@ const useMetrics = (location) => {
 
   const metricsData = [
     {
-      label: "Độ ẩm",
+      label: t("metrics.humidity"),
       icon: <IconDropletHalf2Filled size={18} />,
       value: `${roundUp(location.current.relative_humidity_2m)}%`,
       key: "humidity",
     },
     {
-      label: "Gió",
+      label: t("metrics.wind"),
       icon: <IconWind size={18} />,
       value: `${windSpeed} ${windSpeedUnit}`,
       key: "wind",
     },
     {
-      label: "Tầm nhìn",
+      label: t("metrics.visibility"),
       icon: <IconEye size={18} />,
       value: `${visibilityValue} ${visibilityUnit}`,
       key: "visibility",
     },
     {
-      label: "Áp suất",
+      label: t("metrics.pressure"),
       icon: <IconGauge size={18} />,
       value: `${roundUp(location.current.surface_pressure)} hPa`,
       key: "pressure",
     },
     {
-      label: "Chỉ số UV",
+      label: t("metrics.uv_index"),
       icon: <IconSun size={18} />,
       value: getUvLevel(location.current.uv_index),
       key: "uvindex",
     },
     {
-      label: "Lượng mưa",
+      label: t("metrics.precipitation"),
       icon: <IconTemperature size={18} />, // Note: IconTemperature is often used for general temp, consider IconCloudRain
       value: `${precipitationValue} ${precipitationUnit}`,
       key: "precipitation",

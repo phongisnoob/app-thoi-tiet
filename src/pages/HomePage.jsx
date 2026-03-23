@@ -1,4 +1,5 @@
 import { lazy, useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { useGeolocation, useLocations } from "../hooks";
 import useWeatherStore from "../store/weatherStore";
 
@@ -16,6 +17,7 @@ import { notifyError } from "../components/basic/toast";
 const ErrorPage = lazy(() => import("./ErrorPage"));
 
 const HomePage = () => {
+  const { t } = useTranslation();
   const [selectedLocation, setSelectedLocation] = useState(null);
   const { fetchingLocations, locations, getLocations } = useLocations();
 
@@ -87,7 +89,7 @@ const HomePage = () => {
       <WeatherAlerts />
 
       <AnimatedHeadline
-        text="Thời tiết hôm nay thế nào?"
+        text={t("home.headline")}
         className="text-preset-2 text-center text-balance px-5 not-dark:text-(--neutral-900)"
       />
 
@@ -101,7 +103,7 @@ const HomePage = () => {
       {locations === undefined ? (
         <div className="flex justify-center items-center">
           <p className="text-preset-4 mt-12 not-dark:text-(--neutral-900)">
-            Không tìm thấy kết quả!
+            {t("home.no_results", { query: searchInputRef?.current?.value || '' })}
           </p>
         </div>
       ) : (

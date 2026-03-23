@@ -5,6 +5,7 @@ import {
   getWeatherIcon,
 } from "../../../constants/weatherConstants";
 import { motion } from "motion/react";
+import { useTranslation } from "react-i18next";
 import { DaysDropdown, HourlyWeatherCard } from ".";
 
 const HOURS_IN_A_DAY = 24;
@@ -22,6 +23,7 @@ const containerVariants = {
 };
 
 const HourlyForecast = () => {
+  const { t, i18n } = useTranslation();
   const listRef = useRef();
 
   const isFetching = useWeatherStore((state) => state.isFetching);
@@ -29,7 +31,7 @@ const HourlyForecast = () => {
     useWeatherStore((state) => state.weatherData) || {};
 
   const date = new Date(current?.time ?? Date.now());
-  const today = new Intl.DateTimeFormat("vi-VN", { weekday: "long" })
+  const today = new Intl.DateTimeFormat(i18n.language?.startsWith('vi') ? "vi-VN" : "en-US", { weekday: "long" })
     .format(date)
     .toLowerCase();
 
@@ -58,7 +60,7 @@ const HourlyForecast = () => {
   // Find the forecast data for the selected day once and filter past hours for 'Today'
   const selectedDayData = useMemo(() => {
     const day = hourlyForecasts.find((dayChunk) =>
-      new Intl.DateTimeFormat("vi-VN", { weekday: "long" })
+      new Intl.DateTimeFormat(i18n.language?.startsWith('vi') ? "vi-VN" : "en-US", { weekday: "long" })
         .format(new Date(dayChunk[0].time))
         .toLowerCase()
         .includes(selectedDay.toLowerCase())
@@ -89,7 +91,7 @@ const HourlyForecast = () => {
           id="hourly-forecast-heading"
           className="text-preset-5 text-(--neutral-000) not-dark:text-(--neutral-900)"
         >
-          Dự báo hàng giờ
+          {t("weather.hourly_forecast")}
         </h3>
         <DaysDropdown
           today={today}
@@ -119,7 +121,7 @@ const HourlyForecast = () => {
                   time={null}
                   min_temp={null}
                   scrollRootRef={null}
-                  altText={"Đang tải dữ liệu"}
+                  altText={t("weather.loading")}
                 />
               ))
           : selectedDayData.map((hourData, index) => {

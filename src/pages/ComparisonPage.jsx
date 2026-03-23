@@ -10,8 +10,10 @@ import {
   LoadingOverlay,
 } from "../components/comparison";
 import { notifyError, notifyInfo } from "../components/basic/toast";
+import { useTranslation } from "react-i18next";
 
 const ComparisonPage = () => {
+  const { t } = useTranslation();
   const [showModal, setShowModal] = useState(false);
 
   const fetchGeolocationWeather = useWeatherStore(
@@ -33,7 +35,7 @@ const ComparisonPage = () => {
 
       if (!locationToAdd) {
         const position = await getCurrentPositionPromise();
-        notifyInfo("Đang lấy thông tin thời tiết vị trí hiện tại...");
+        notifyInfo(t("comparison.fetching_current"));
         locationToAdd = await fetchGeolocationWeather(position);
       }
 
@@ -45,16 +47,16 @@ const ComparisonPage = () => {
         );
 
         if (isAlreadyAdded) {
-          notifyError("Vị trí hiện tại đã có trong danh sách so sánh.");
+          notifyError(t("comparison.already_added"));
         } else {
           await addCompareLocation(locationToAdd);
         }
       } else {
-        notifyError("Không thể lấy dữ liệu vị trí hiện tại.");
+        notifyError(t("comparison.cannot_retrieve"));
       }
     } catch (error) {
       notifyError(
-        error.message || "Không thể thêm vị trí hiện tại vào so sánh."
+        error.message || t("comparison.failed_compare")
       );
     }
   };

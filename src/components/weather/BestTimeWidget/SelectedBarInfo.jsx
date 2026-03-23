@@ -1,8 +1,10 @@
 import { motion } from "motion/react";
 import { getScoreTextColor } from "../../../utils/scoreUtils";
 import { formatHour } from "../../../utils/formatDateTime";
+import { useTranslation } from "react-i18next";
 
 const SelectedBarInfo = ({ selectedBar, hourlyScores, tempUnit }) => {
+  const { t } = useTranslation();
   if (selectedBar === null && !hourlyScores[selectedBar]) return null;
 
   const { hour, temp, score, precipitation } = hourlyScores[selectedBar];
@@ -44,15 +46,10 @@ const SelectedBarInfo = ({ selectedBar, hourlyScores, tempUnit }) => {
         {/* Rain Expectations */}
         <div
           className="text-xs text-(--neutral-200) not-dark:text-(--neutral-600) mt-1"
-          aria-label={
-            precipitation > 0
-              ? `Mưa: ${precipitation.toFixed(1)} mm`
-              : "Dự báo: Trời khô ráo."
-          }
         >
           {precipitation > 0
-            ? `Mưa: ${precipitation.toFixed(1)}mm`
-            : "Dự báo trời khô ráo."}
+            ? t("weather.rain_mm", { val: precipitation.toFixed(1) })
+            : t("weather.dry_expect")}
         </div>
       </div>
     </motion.div>

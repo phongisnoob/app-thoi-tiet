@@ -12,6 +12,7 @@ import {
 import useWeatherStore from "../store/weatherStore";
 import { useMemo } from "react";
 import { getWeatherIcon } from "../constants/weatherConstants";
+import { useTranslation } from "react-i18next";
 
 /**
  * Generates UI-ready weather recommendations from the app's weather store.
@@ -24,6 +25,7 @@ import { getWeatherIcon } from "../constants/weatherConstants";
  * @returns {Array<{icon: JSX.Element, text: string, color: string}>} Memoized list of recommendation objects to render.
  */
 const useSmartRecommendations = () => {
+  const { t } = useTranslation();
   const weatherData = useWeatherStore((state) => state.weatherData);
   const units = useWeatherStore((state) => state.units);
 
@@ -65,7 +67,7 @@ const useSmartRecommendations = () => {
     if (weatherType === "storm") {
       recommendationsList.push({
         icon: <IconAlertTriangle size={24} />,
-        text: "Cảnh báo giông bão - ở trong nhà và tránh ra đường",
+        text: t("recommendations.storm"),
         color: "text-red-500",
       });
     }
@@ -74,9 +76,7 @@ const useSmartRecommendations = () => {
     if (wind_speed_10m > WIND_EXTREME_THRESHOLD) {
       recommendationsList.push({
         icon: <IconWind size={24} />,
-        text: `Gió giật mạnh (${Math.round(wind_speed_10m)}${
-          isMetric ? "km/h" : "mph"
-        })`,
+        text: t("recommendations.extreme_wind", { speed: Math.round(wind_speed_10m), unit: isMetric ? "km/h" : "mph" }),
         color: "text-red-500",
       });
     }
@@ -85,26 +85,26 @@ const useSmartRecommendations = () => {
     if (weatherType === "snow") {
       recommendationsList.push({
         icon: <IconSnowflake size={24} />,
-        text: "Cần đồ giữ ấm - áo ấm và giày chống nước",
+        text: t("recommendations.snow_clothes"),
         color: "text-blue-400",
       });
     }
     if (tempForComfort < COLD_THRESHOLD_1) {
       recommendationsList.push({
         icon: <IconShirt size={24} />,
-        text: "Khuyên dùng áo khoác dày",
+        text: t("recommendations.heavy_jacket"),
         color: "text-blue-500",
       });
     } else if (tempForComfort < COLD_THRESHOLD_2) {
       recommendationsList.push({
         icon: <IconShirt size={24} />,
-        text: "Áo khoác mỏng hoặc áo len",
+        text: t("recommendations.light_jacket"),
         color: "text-cyan-500",
       });
     } else if (tempForComfort > HOT_THRESHOLD) {
       recommendationsList.push({
         icon: <IconShirt size={24} />,
-        text: "Quần áo mỏng, thoáng mát",
+        text: t("recommendations.light_clothes"),
         color: "text-orange-500",
       });
     }
@@ -113,7 +113,7 @@ const useSmartRecommendations = () => {
     if (weatherType === "fog") {
       recommendationsList.push({
         icon: <IconEye size={24} />,
-        text: "Tầm nhìn hạn chế - lái xe cẩn thận và bật đèn pha",
+        text: t("recommendations.fog"),
         color: "text-gray-400",
       });
     }
@@ -126,17 +126,16 @@ const useSmartRecommendations = () => {
       getWeatherIcon(weather_code) === "drizzle";
 
     if (needsUmbrella && weatherType !== "storm" && weatherType !== "snow") {
-      let umbrellaText = "Nhớ mang theo ô (dù)";
+      let umbrellaText = t("recommendations.umbrella");
 
       if (wind_speed_10m > WIND_HIGH_THRESHOLD) {
-        umbrellaText =
-          "Dự báo mưa to - ô có thể không hiệu quả, hãy mặc áo mưa";
+        umbrellaText = t("recommendations.raincoat_needed");
       } else if (weatherType === "drizzle" && precipitation < 1) {
-        umbrellaText = "Dự báo mưa phùn nhẹ - khuyên dùng ô";
+        umbrellaText = t("recommendations.drizzle");
       } else if (weatherType === "rain" || precipitation > 2) {
-        umbrellaText = "Dự báo có mưa - nhớ mang theo ô";
+        umbrellaText = t("recommendations.rain_umbrella");
       } else if (weatherData.daily?.precipitation_probability?.[0] > 50) {
-        umbrellaText = `${weatherData.daily.precipitation_probability[0]}% khả năng có mưa - nhớ mang theo ô`;
+        umbrellaText = t("recommendations.rain_chance", { val: weatherData.daily.precipitation_probability[0] });
       }
 
       recommendationsList.push({
@@ -153,9 +152,7 @@ const useSmartRecommendations = () => {
     ) {
       recommendationsList.push({
         icon: <IconWind size={24} />,
-        text: `Gió mạnh (${Math.round(wind_speed_10m)}${
-          isMetric ? "km/h" : "mph"
-        })`,
+        text: t("recommendations.high_wind", { speed: Math.round(wind_speed_10m), unit: isMetric ? "km/h" : "mph" }),
         color: "text-orange-400",
       });
     }
@@ -164,7 +161,7 @@ const useSmartRecommendations = () => {
     if (uv_index > 5 && weatherType !== "storm" && weatherType !== "fog") {
       recommendationsList.push({
         icon: <IconSunglasses size={24} />,
-        text: `Nhớ bôi kem chống nắng (UV: ${Math.round(uv_index)})`,
+        text: t("recommendations.sunscreen", { uv: Math.round(uv_index) }),
         color: "text-yellow-400",
       });
     }
@@ -173,7 +170,7 @@ const useSmartRecommendations = () => {
     if (tempForComfort > HOT_THRESHOLD || relative_humidity_2m > 70) {
       recommendationsList.push({
         icon: <IconBottle size={24} />,
-        text: "Giữ cơ thể đủ nước",
+        text: t("recommendations.hydration"),
         color: "text-cyan-400",
       });
     }
@@ -193,7 +190,7 @@ const useSmartRecommendations = () => {
     if (isGoodWeather) {
       recommendationsList.push({
         icon: <IconWalk size={24} />,
-        text: "Thời tiết tuyệt vời cho các hoạt động ngoài trời!",
+        text: t("recommendations.good_weather"),
         color: "text-green-400",
       });
     }

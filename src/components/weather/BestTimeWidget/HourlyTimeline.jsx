@@ -5,8 +5,10 @@ import { getScoreColor, getScoreLabel } from "../../../utils/scoreUtils";
 import { SelectedBarInfo } from ".";
 import { useWeatherAnalysis } from "../../../hooks";
 import Tippy from "@tippyjs/react";
+import { useTranslation } from "react-i18next";
 
 const HourlyTimeline = ({ selectedBar, setSelectedBar }) => {
+  const { t } = useTranslation();
   const { analysis, tempUnit } = useWeatherAnalysis();
   if (!analysis) return null;
   const { hourlyScores, firstHour, lastHour } = analysis;
@@ -38,14 +40,14 @@ const HourlyTimeline = ({ selectedBar, setSelectedBar }) => {
           id="hourly-timeline-label"
           className="text-(--neutral-200) not-dark:text-(--neutral-600) text-sm font-medium"
         >
-          {hourlyScores.length} giờ tới
+          {t("weather.next_hours", { count: hourlyScores.length })}
         </h4>
         <div
           className="flex items-center gap-1 text-xs text-(--neutral-200) not-dark:text-(--neutral-600)"
           aria-label="Instruction for interacting with hourly forecast"
         >
           <IconInfoCircle size={14} aria-hidden="true" />
-          <span>Nhấn vào thanh trên biểu đồ để xem chi tiết</span>
+          <span>{t("weather.tap_bars")}</span>
         </div>
       </div>
 

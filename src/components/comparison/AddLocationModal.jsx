@@ -4,8 +4,10 @@ import useWeatherStore from "../../store/weatherStore";
 import { IconLoader2, IconSearch, IconX } from "@tabler/icons-react";
 import { VoiceSearchButton } from "../basic";
 import { useCallback, useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 
 const AddLocationModal = ({ setShowModal }) => {
+  const { t } = useTranslation();
   const [inputValue, setInputValue] = useState("");
   const { fetchingLocations, locations, getLocations } = useLocations();
   const addCompareLocation = useWeatherStore(
@@ -71,7 +73,7 @@ const AddLocationModal = ({ setShowModal }) => {
         </button>
 
         <h3 className="text-(--neutral-900) dark:text-(--neutral-200) mb-4 text-preset-5">
-          Thêm vị trí
+          {t("comparison.add_title", "Thêm vị trí")}
         </h3>
 
         <form
@@ -86,7 +88,7 @@ const AddLocationModal = ({ setShowModal }) => {
               type="text"
               className="searchBar"
               autoCorrect="off"
-              placeholder="Nhập tên một vị trí..."
+              placeholder={t("comparison.search_placeholder", "Nhập tên một vị trí...")}
               value={inputValue}
               onChange={(e) => setInputValue(e.target.value)}
             />
@@ -103,7 +105,7 @@ const AddLocationModal = ({ setShowModal }) => {
             className="primary_btn"
             disabled={fetchingLocations}
           >
-            {fetchingLocations ? "Đang tìm..." : "Tìm kiếm"}
+            {fetchingLocations ? t("comparison.searching", "Đang tìm...") : t("comparison.search_button", "Tìm kiếm")}
           </button>
         </form>
 
@@ -132,7 +134,7 @@ const AddLocationModal = ({ setShowModal }) => {
                     onClick={() => addNewLocation(loc)}
                     className="add_location_btn"
                   >
-                    Thêm
+                    {t("comparison.add_btn", "Thêm")}
                   </button>
                 </li>
               ))}
@@ -143,7 +145,7 @@ const AddLocationModal = ({ setShowModal }) => {
         {!fetchingLocations && locations === undefined && (
           <p className="p-2 mt-4 text-center not-dark:text-(--neutral-900)">
             <span className="text-preset-7">
-              Không tìm thấy kết quả cho &quot;{inputValue}&quot;
+              {t("comparison.no_results", { query: inputValue, defaultValue: `Không tìm thấy kết quả cho "${inputValue}"` })}
             </span>
           </p>
         )}

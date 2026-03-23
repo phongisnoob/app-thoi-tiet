@@ -2,8 +2,10 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { IconSun } from "@tabler/icons-react";
 import { HourlyTimeline, OptimalWindow, ScoreLegend } from ".";
+import { useTranslation } from "react-i18next";
 
 const BestTimeWidget = () => {
+  const { t } = useTranslation();
   const [selectedBar, setSelectedBar] = useState(null);
 
   return (
@@ -22,7 +24,7 @@ const BestTimeWidget = () => {
             id="best-time-widget-heading"
             className="text-preset-5 text-(--neutral-000) not-dark:text-(--neutral-900)"
           >
-            Thời điểm ra ngoài tốt nhất hôm nay
+            {t("weather.best_time_outside")}
           </h3>
         </div>
 

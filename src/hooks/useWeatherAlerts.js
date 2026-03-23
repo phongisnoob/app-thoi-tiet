@@ -1,5 +1,6 @@
 import { useCallback, useMemo, useState } from "react";
 import useWeatherStore from "../store/weatherStore";
+import { useTranslation } from "react-i18next";
 
 /**
  * Derives user-facing weather alerts from current conditions and unit preferences in useWeatherStore.
@@ -10,6 +11,7 @@ import useWeatherStore from "../store/weatherStore";
  * @returns {Function} dismissAlert: function to mark an alert id as dismissed.
  */
 const useWeatherAlerts = () => {
+  const { t } = useTranslation();
   const weatherData = useWeatherStore((state) => state.weatherData);
   const units = useWeatherStore((state) => state.units);
 
@@ -42,16 +44,16 @@ const useWeatherAlerts = () => {
     if (current.apparent_temperature > HEAT_THRESHOLD) {
       alerts.push({
         id: "extreme-heat",
-        title: "🌡️ Cảnh báo nắng nóng",
-        message: `Nhiệt độ cảm nhận là ${displayTemp}${displayUnit}. Hãy uống đủ nước và tránh tiếp xúc lâu với ánh nắng mặt trời.`,
+        title: t("alerts.extreme_heat"),
+        message: t("alerts.extreme_heat_msg", { temp: displayTemp, unit: displayUnit }),
         color: "bg-red-700",
         borderColor: "border-red-500",
       });
     } else if (current.apparent_temperature <= FREEZING_THRESHOLD) {
       alerts.push({
         id: "freezing",
-        title: "🥶 Nhiệt độ đóng băng",
-        message: `Nhiệt độ cảm nhận là ${displayTemp}${displayUnit}. Hãy mặc đủ ấm!`,
+        title: t("alerts.freezing"),
+        message: t("alerts.freezing_msg", { temp: displayTemp, unit: displayUnit }),
         color: "bg-blue-700",
         borderColor: "border-blue-500",
       });
@@ -61,10 +63,8 @@ const useWeatherAlerts = () => {
     if (current.precipitation > RAIN_THRESHOLD) {
       alerts.push({
         id: "heavy-rain",
-        title: "🌧️ Cảnh báo mưa lớn",
-        message: `Lượng mưa đạt ${current.precipitation.toFixed(
-          1
-        )}${RAIN_UNIT}. Đừng quên mang theo ô/dù!`,
+        title: t("alerts.heavy_rain"),
+        message: t("alerts.heavy_rain_msg", { val: current.precipitation.toFixed(1), unit: RAIN_UNIT }),
         color: "bg-blue-600",
         borderColor: "border-blue-400",
       });
@@ -73,10 +73,8 @@ const useWeatherAlerts = () => {
     if (current.wind_speed_10m > WIND_THRESHOLD) {
       alerts.push({
         id: "strong-wind",
-        title: "💨 Cảnh báo gió giật mạnh",
-        message: `Tốc độ gió lúc này là ${Math.round(
-          current.wind_speed_10m
-        )} ${WIND_UNIT}. Hãy chằng chống đồ vật cẩn thận.`,
+        title: t("alerts.strong_wind"),
+        message: t("alerts.strong_wind_msg", { speed: Math.round(current.wind_speed_10m), unit: WIND_UNIT }),
         color: "bg-orange-700",
         borderColor: "border-orange-500",
       });
@@ -86,8 +84,8 @@ const useWeatherAlerts = () => {
     if (current.uv_index > 7) {
       alerts.push({
         id: "high-uv",
-        title: "☀️ Chỉ số UV cao",
-        message: `Chỉ số UV: ${current.uv_index}. Hãy thoa kem chống nắng và mặc áo khoác bảo vệ.`,
+        title: t("alerts.high_uv"),
+        message: t("alerts.high_uv_msg", { val: current.uv_index }),
         color: "bg-yellow-800",
         borderColor: "border-yellow-600",
       });
@@ -97,10 +95,8 @@ const useWeatherAlerts = () => {
     if (current.visibility < VISIBILITY_THRESHOLD) {
       alerts.push({
         id: "poor-visibility",
-        title: "🌁 Tầm nhìn hạn chế",
-        message: `Tầm nhìn dưới ${
-          VISIBILITY_THRESHOLD / 1000
-        } ${VISIBILITY_UNIT}. Hãy lái xe cẩn thận!`,
+        title: t("alerts.poor_visibility"),
+        message: t("alerts.poor_visibility_msg", { val: (VISIBILITY_THRESHOLD / 1000), unit: VISIBILITY_UNIT }),
         color: "bg-gray-700",
         borderColor: "border-gray-500",
       });

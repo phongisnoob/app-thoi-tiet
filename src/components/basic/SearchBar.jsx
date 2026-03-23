@@ -7,6 +7,7 @@ import { IconCurrentLocation, IconSearch } from "@tabler/icons-react";
 import Tippy from "@tippyjs/react";
 import useWeatherStore from "../../store/weatherStore";
 import { VoiceSearchButton } from ".";
+import { useTranslation } from "react-i18next";
 
 const SearchBar = ({
   fetchingLocations,
@@ -14,6 +15,7 @@ const SearchBar = ({
   getLocations,
   setSelectedLocation,
 }) => {
+  const { t } = useTranslation();
   const [inputValue, setInputValue] = useState("");
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const searchBarRef = useRef(null);
@@ -97,7 +99,7 @@ const SearchBar = ({
               setInputValue(e.target.value);
             }}
             className="searchBar"
-            placeholder="Tìm kiếm một địa điểm..."
+            placeholder={t("search.placeholder")}
           />
 
           {supported && (
@@ -113,7 +115,7 @@ const SearchBar = ({
               {fetchingLocations ? (
                 <li className="day_button flex gap-2.5">
                   <Loader className="animate-spin" />
-                  <span className="text-preset-7">Đang tìm kiếm</span>
+                  <span className="text-preset-7">{t("search.searching")}</span>
                 </li>
               ) : (
                 locations?.length > 0 &&
@@ -138,7 +140,7 @@ const SearchBar = ({
                 (locations?.length === 0 || locations === undefined) && (
                   <li className="day_button">
                     <span className="text-preset-7">
-                      Không tìm thấy kết quả cho &quot;{inputValue}&quot;
+                      {t("search.no_results", { query: inputValue })}
                     </span>
                   </li>
                 )}
@@ -152,16 +154,16 @@ const SearchBar = ({
             className="w-full md:w-fit primary_btn disabled:bg-gray-500 disabled:cursor-not-allowed"
             disabled={isFetching}
           >
-            Tìm kiếm
+            {t("search.button")}
           </button>
 
-          <Tippy content="Vị trí hiện tại">
+          <Tippy content={t("search.current_location")}>
             <button
               onClick={handleCurrentLocation}
               className="primary_btn group disabled:bg-gray-500 disabled:cursor-not-allowed"
               type="button"
               disabled={isFetching}
-              aria-label="Vị trí hiện tại"
+              aria-label={t("search.current_location")}
             >
               <IconCurrentLocation className="group-hover:rotate-90 duration-500 transition-transform" />
             </button>

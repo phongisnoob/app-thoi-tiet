@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { notifyError } from "../components/basic/toast";
+import { useTranslation } from "react-i18next";
 
 // Check for browser support
 const SpeechRecognition =
@@ -23,6 +24,7 @@ const recognitionSupported = !!SpeechRecognition;
  * @returns {Boolean} supported: boolean indicating if SpeechRecognition is supported
  */
 const useVoiceSearch = () => {
+  const { i18n } = useTranslation();
   const [isListening, setIsListening] = useState(false);
   const [speechText, setSpeechText] = useState("");
   const recognitionRef = useRef(null);
@@ -32,7 +34,7 @@ const useVoiceSearch = () => {
 
     const recognition = new SpeechRecognition();
     recognition.continuous = false;
-    recognition.lang = "vi-VN";
+    recognition.lang = i18n.language?.startsWith('vi') ? "vi-VN" : "en-US";
     recognition.interimResults = false;
     recognition.maxAlternatives = 1;
 
@@ -63,7 +65,7 @@ const useVoiceSearch = () => {
     return () => {
       recognition.stop();
     };
-  }, []);
+  }, [i18n.language]);
 
   const clearSpeechText = () => {
     setSpeechText("");

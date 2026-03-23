@@ -1,17 +1,19 @@
 import { getWeatherIcon } from "../../constants/weatherConstants";
 import useWeatherStore from "../../store/weatherStore";
 import { DailyForecastCard } from ".";
+import { useTranslation } from "react-i18next";
 
 const DAYS_IN_A_WEEK = 7;
 
 const DailyForecast = () => {
+  const { t, i18n } = useTranslation();
   const { daily } = useWeatherStore((state) => state.weatherData) || {};
   const isFetching = useWeatherStore((state) => state.isFetching);
 
   return (
     <section className="space-y-5">
       <h3 className="text-preset-5 text-(--neutral-000) not-dark:text-(--neutral-900)">
-        Dự báo hàng ngày
+        {t("weather.daily_forecast")}
       </h3>
 
       <div className="grid grid-cols-[repeat(auto-fit,minmax(5.5rem,1fr))] gap-4">
@@ -28,7 +30,7 @@ const DailyForecast = () => {
                 isFetching={isFetching}
                 day={
                   shouldDisplayData
-                    ? new Intl.DateTimeFormat("vi-VN", {
+                    ? new Intl.DateTimeFormat(i18n.language?.startsWith('vi') ? "vi-VN" : "en-US", {
                         weekday: "short",
                       }).format(new Date(daily.time[index]))
                     : ""

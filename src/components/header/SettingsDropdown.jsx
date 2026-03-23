@@ -2,42 +2,42 @@ import { memo, useCallback, useRef, useState } from "react";
 import { Fragment } from "react";
 import useWeatherStore from "../../store/weatherStore";
 import { AnimatePresence, motion } from "motion/react";
+import { useTranslation } from "react-i18next";
 
 import { Dropdown, Gear } from "../basic/Icons";
 import { useClickOutside } from "../../hooks";
 import { SettingFieldset } from ".";
 
-const allFields = [
-  {
-    legend: "Nhiệt độ",
-    options: [
-      { label: "Độ C (°C)", value: "celsius", type: "temperature_unit" },
-      {
-        label: "Độ F (°F)",
-        value: "fahrenheit",
-        type: "temperature_unit",
-      },
-    ],
-  },
-  {
-    legend: "Tốc độ gió",
-    options: [
-      { label: "km/h", value: "kmh", type: "wind_speed_unit" },
-      { label: "mph", value: "mph", type: "wind_speed_unit" },
-    ],
-  },
-  {
-    legend: "Lượng mưa",
-    options: [
-      { label: "Milimét (mm)", value: "mm", type: "precipitation_unit" },
-      { label: "Inch (in)", value: "inch", type: "precipitation_unit" },
-    ],
-  },
-];
+
 
 const SettingsDropdown = () => {
   const [isOpen, setIsOpen] = useState(false);
   const settingsDropdownRef = useRef();
+  const { t, i18n } = useTranslation();
+
+  const allFields = [
+    {
+      legend: t("nav.temp"),
+      options: [
+        { label: t("nav.celsius"), value: "celsius", type: "temperature_unit" },
+        { label: t("nav.fahrenheit"), value: "fahrenheit", type: "temperature_unit" },
+      ],
+    },
+    {
+      legend: t("nav.wind"),
+      options: [
+        { label: t("nav.kmh"), value: "kmh", type: "wind_speed_unit" },
+        { label: t("nav.mph"), value: "mph", type: "wind_speed_unit" },
+      ],
+    },
+    {
+      legend: t("nav.precip"),
+      options: [
+        { label: t("nav.mm"), value: "mm", type: "precipitation_unit" },
+        { label: t("nav.inch"), value: "inch", type: "precipitation_unit" },
+      ],
+    },
+  ];
 
   const units = useWeatherStore((state) => state.units);
   const setUnits = useWeatherStore((state) => state.setUnits);
@@ -49,17 +49,22 @@ const SettingsDropdown = () => {
     const isMetric = units.temperature_unit === "celsius";
     const newUnits = isMetric
       ? {
-          temperature_unit: "fahrenheit",
-          wind_speed_unit: "mph",
-          precipitation_unit: "inch",
-        }
+        temperature_unit: "fahrenheit",
+        wind_speed_unit: "mph",
+        precipitation_unit: "inch",
+      }
       : {
-          temperature_unit: "celsius",
-          wind_speed_unit: "kmh",
-          precipitation_unit: "mm",
-        };
+        temperature_unit: "celsius",
+        wind_speed_unit: "kmh",
+        precipitation_unit: "mm",
+      };
     setUnits(newUnits);
   }, [setUnits, units.temperature_unit]);
+
+  const toggleLanguage = useCallback(() => {
+    const nextLang = i18n.language?.startsWith('vi') ? 'en' : 'vi';
+    i18n.changeLanguage(nextLang);
+  }, [i18n]);
 
   return (
     <div ref={settingsDropdownRef} className="relative">
@@ -73,7 +78,7 @@ const SettingsDropdown = () => {
         className="settings_dropdown"
       >
         <Gear className="size-3.5 md:size-4" />
-        <span>Đơn vị</span>
+        <span>{t("nav.settings_units")} / {t("nav.settings_language")}</span>
         <Dropdown isOpen={isOpen} />
       </motion.button>
 
@@ -90,16 +95,27 @@ const SettingsDropdown = () => {
             role="region"
             aria-label="Unit settings"
           >
-            <button
-              onClick={toggleSystem}
-              className="switch_btn"
-              type="button"
-              aria-label="Switch unit system"
-            >
-              {units.temperature_unit === "celsius"
-                ? "Chuyển sang Hệ Anh (Imperial)"
-                : "Chuyển sang Hệ Mét (Metric)"}
-            </button>
+            <div className="flex flex-col p-1 gap-1">
+              <button
+                onClick={toggleLanguage}
+                className="switch_btn mb-0"
+                type="button"
+                aria-label="Switch language"
+              >
+                {i18n.language?.startsWith('vi') ? t("nav.settings_language_en") : t("nav.settings_language_vi")}
+              </button>
+
+              <button
+                onClick={toggleSystem}
+                className="switch_btn mb-0"
+                type="button"
+                aria-label="Switch unit system"
+              >
+                {units.temperature_unit === "celsius"
+                  ? t("nav.settings_imperial")
+                  : t("nav.settings_metric")}
+              </button>
+            </div>
 
             {allFields.map((field) => (
               <Fragment key={field.legend}>
