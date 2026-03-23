@@ -87,7 +87,7 @@ const HomePage = () => {
       <WeatherAlerts />
 
       <AnimatedHeadline
-        text="Bầu trời hôm nay thế nào?"
+        text="Thời tiết hôm nay thế nào?"
         className="text-preset-2 text-center text-balance px-5 not-dark:text-(--neutral-900)"
       />
 
